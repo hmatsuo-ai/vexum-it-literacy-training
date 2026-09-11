@@ -1,0 +1,929 @@
+/*
+ * Dense motion layer
+ * Extends design-research/animation-patterns-100.md so that every major
+ * content zone has either entrance motion, ambient motion or interaction.
+ * Loaded after globals.css to enrich — not replace — the existing motion system.
+ */
+
+/* ---------- Global rhythm / section transitions ---------- */
+.gate {
+  overflow: clip;
+}
+
+.gate > section,
+.gate > nav,
+.mission-section {
+  position: relative;
+}
+
+.gate > section::selection,
+.gate > nav::selection {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.mission-section::before {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  background: linear-gradient(90deg, transparent, var(--chapter-accent), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: dense-section-line linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 18%;
+  pointer-events: none;
+}
+
+.mission-section article::before {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 4px;
+  margin: 0 0 28px;
+  border-radius: 99px;
+  background: var(--chapter-accent);
+  transform-origin: left;
+  animation: dense-article-marker 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 3% cover 20%;
+}
+
+/* ---------- Header / logo ---------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.35s ease;
+}
+
+.logo:hover {
+  transform: translateY(-3px) rotate(-0.7deg);
+  letter-spacing: 0.11em;
+}
+
+.logo small {
+  display: inline-block;
+  animation: dense-logo-caption 4.8s ease-in-out infinite;
+}
+
+.start::after {
+  content: "↘";
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  opacity: 0;
+  transform: translate(-10px, -50%);
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.start:hover::after {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+/* ---------- Hero: layered ambient movement ---------- */
+.hero {
+  background-size: 180% 180%;
+  animation: dense-hero-gradient 14s ease-in-out infinite;
+}
+
+.hero::before {
+  animation: dense-hero-orb-a 11s ease-in-out infinite !important;
+}
+
+.hero::after {
+  animation: dense-hero-orb-b 13s ease-in-out infinite !important;
+}
+
+.orb {
+  box-shadow:
+    0 0 0 1px rgba(32, 33, 61, 0.08),
+    0 0 70px rgba(134, 201, 255, 0.35);
+  animation: dense-orb-drift 9s ease-in-out infinite;
+}
+
+.orb::before,
+.orb::after {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  border: 1px solid rgba(32, 33, 61, 0.16);
+  border-radius: 50%;
+  animation: dense-orbit-ring 12s linear infinite;
+}
+
+.orb::after {
+  inset: -38%;
+  border-style: dashed;
+  animation-duration: 18s;
+  animation-direction: reverse;
+}
+
+.hero-copy > p {
+  position: relative;
+  width: fit-content;
+}
+
+.hero-copy > p::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pink), var(--blue), transparent);
+  transform-origin: left;
+  animation: dense-hero-rule 1s 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-copy > div span {
+  display: inline-block;
+  animation: dense-side-copy 4.2s 1.4s ease-in-out infinite;
+}
+
+.hero-copy > div a {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+}
+
+.hero-copy > div a::before,
+.hero-copy > div a::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -8px;
+  border: 1px solid rgba(32, 33, 61, 0.28);
+  border-radius: 50%;
+  animation: dense-cta-ring 3.4s ease-out infinite;
+}
+
+.hero-copy > div a::after {
+  animation-delay: 1.7s;
+}
+
+.hero-copy > div a:hover {
+  transform: translateY(-7px) rotate(7deg) scale(1.06);
+  box-shadow: 0 14px 30px rgba(32, 33, 61, 0.2);
+}
+
+.hero-copy > div a:active,
+.start:active,
+.continue a:active {
+  transform: scale(0.94);
+}
+
+/* ---------- Marquee ---------- */
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: 9vw;
+  pointer-events: none;
+}
+
+.marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--ink), transparent);
+}
+
+.marquee::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--ink), transparent);
+}
+
+.marquee:hover div {
+  animation-play-state: paused;
+}
+
+/* ---------- Journey / intro ---------- */
+.intro::before {
+  animation: dense-photo-parallax linear both;
+  animation-timeline: view();
+  animation-range: entry 0% exit 100%;
+}
+
+.intro::after {
+  background-size: 160% 100%;
+  animation: dense-intro-light 9s ease-in-out infinite;
+}
+
+.intro > p::before,
+.path > p::before {
+  content: "●";
+  display: inline-block;
+  margin-right: 10px;
+  animation: dense-kicker-dot 2.2s ease-in-out infinite;
+}
+
+.journey-title {
+  perspective: 800px;
+}
+
+.journey-title > span,
+.journey-title > em {
+  transform-origin: left center;
+}
+
+.journey-title > span:nth-child(odd) {
+  animation-name: dense-title-rise-left;
+}
+
+.journey-title > span:nth-child(even),
+.journey-title > em {
+  animation-name: dense-title-rise-right;
+}
+
+.journey-copy p {
+  position: relative;
+}
+
+.journey-copy p::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 0.65em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pink);
+  transform: scale(0);
+  animation: dense-copy-dot 0.45s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 12% cover 28%;
+}
+
+.journey-copy strong {
+  position: relative;
+  overflow: hidden;
+}
+
+.journey-copy strong::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 0 40%, rgba(255, 255, 255, 0.85) 50%, transparent 60% 100%);
+  transform: translateX(-130%);
+  animation: dense-text-glint 4.6s 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ---------- Mission index ---------- */
+.path {
+  overflow: hidden;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.55), transparent 26%),
+    radial-gradient(circle at 85% 70%, rgba(134, 201, 255, 0.24), transparent 24%);
+  background-size: 130% 130%, 140% 140%;
+  animation: dense-path-atmosphere 11s ease-in-out infinite;
+}
+
+.path::after {
+  content: "";
+  position: absolute;
+  top: -35%;
+  left: -12%;
+  width: 16%;
+  height: 170%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: rotate(16deg);
+  animation: dense-path-scan 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.path a {
+  position: relative;
+  isolation: isolate;
+}
+
+.path a::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 7px -14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.36);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.path a:hover::before,
+.path a:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.path a b {
+  animation: dense-index-number 3.8s ease-in-out infinite;
+}
+
+.path a:nth-of-type(2n) b {
+  animation-delay: -1.9s;
+}
+
+.path a span {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.path a:hover span {
+  transform: translateX(6px) skewX(-1deg);
+}
+
+/* ---------- Mission hero bands ---------- */
+.mission-band::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: -40% auto -40% -18%;
+  width: 15%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-18deg);
+  animation: dense-band-scan 7.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.mission-band > p,
+.mission-band h1,
+.mission-band h2,
+.mission-band > strong,
+.mission-stamp {
+  z-index: 2;
+}
+
+.planet {
+  box-shadow: 0 0 0 18px color-mix(in srgb, var(--chapter-accent) 5%, transparent);
+  animation: dense-planet-drift 10s ease-in-out infinite !important;
+}
+
+.planet::before,
+.planet::after {
+  content: "";
+  position: absolute;
+  inset: -9%;
+  border: 1px solid color-mix(in srgb, var(--chapter-accent) 28%, transparent);
+  border-radius: 50%;
+  animation: dense-orbit-ring 14s linear infinite;
+}
+
+.planet::after {
+  inset: -20%;
+  border-style: dashed;
+  animation-duration: 21s;
+  animation-direction: reverse;
+}
+
+.mission-stamp {
+  animation: dense-stamp-wander 5.8s ease-in-out infinite !important;
+}
+
+.mission-band h2 {
+  animation-name: dense-band-copy-swing;
+}
+
+.mission-band > strong i {
+  display: inline-block;
+  animation: dense-fraction-pulse 2.7s ease-in-out infinite;
+}
+
+/* ---------- Article copy: no static gaps ---------- */
+.future b {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.future b::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 100%;
+  height: 4px;
+  background: color-mix(in srgb, var(--chapter-accent) 28%, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: dense-inline-rule 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 30%;
+}
+
+.copy > p {
+  position: relative;
+}
+
+.copy > p::after {
+  content: "";
+  display: block;
+  width: 58px;
+  height: 3px;
+  margin-top: 20px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--chapter-accent), transparent);
+  transform-origin: left;
+  animation: dense-paragraph-tail 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 30%;
+}
+
+.cards > div {
+  position: relative;
+  overflow: hidden;
+}
+
+.cards > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 0 35%, rgba(255, 255, 255, 0.78) 48%, transparent 61% 100%);
+  transform: translateX(-135%);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.cards > div:hover::before {
+  transform: translateX(135%);
+}
+
+.cards > div span {
+  display: inline-block;
+  animation: dense-card-copy 0.62s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 8% cover 24%;
+}
+
+.cards > div:nth-child(2) span { animation-range: entry 11% cover 27%; }
+.cards > div:nth-child(3) span { animation-range: entry 14% cover 30%; }
+.cards > div:nth-child(4) span { animation-range: entry 17% cover 33%; }
+
+.cards > div b {
+  animation: dense-card-index 3.2s ease-in-out infinite;
+}
+
+.cards > div:nth-child(2n) b {
+  animation-delay: -1.6s;
+}
+
+/* ---------- Chapter diagrams ---------- */
+.chapter-visual {
+  isolation: isolate;
+}
+
+.visual-copy h3 {
+  position: relative;
+  width: fit-content;
+}
+
+.visual-copy h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 5px;
+  border-radius: 99px;
+  background: var(--chapter-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: dense-visual-rule 0.9s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 12% cover 30%;
+}
+
+.chapter-visual li b {
+  animation: dense-diagram-number 3.6s ease-in-out infinite;
+}
+
+.chapter-visual li:nth-child(2n) b { animation-delay: -0.9s; }
+.chapter-visual li:nth-child(3n) b { animation-delay: -1.8s; }
+
+.chapter-visual li span {
+  display: inline-block;
+  animation: dense-diagram-label 0.58s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 8% cover 24%;
+}
+
+.chapter-visual li:nth-child(2) span { animation-range: entry 11% cover 27%; }
+.chapter-visual li:nth-child(3) span { animation-range: entry 14% cover 30%; }
+.chapter-visual li:nth-child(4) span { animation-range: entry 17% cover 33%; }
+.chapter-visual li:nth-child(5) span { animation-range: entry 20% cover 36%; }
+
+/* ---------- Mission 01 comparison ---------- */
+.comparison-head b {
+  animation: dense-comparison-head 0.65s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 28%;
+}
+
+.comparison-head b:last-child {
+  animation-name: dense-comparison-head-right;
+}
+
+.comparison-row > strong,
+.comparison-row > p {
+  animation: dense-cell-left 0.62s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 6% cover 24%;
+}
+
+.comparison-row > p:nth-of-type(1) {
+  animation-range: entry 10% cover 28%;
+}
+
+.comparison-row > p:nth-of-type(2) {
+  animation-name: dense-cell-right;
+  animation-range: entry 14% cover 32%;
+}
+
+.comparison-row > strong {
+  position: relative;
+}
+
+.comparison-row > strong::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--pink);
+  animation: dense-kicker-dot 2.4s ease-in-out infinite;
+}
+
+.value-scene > p,
+.value-scene h4,
+.value-scene > div {
+  animation: dense-scene-line 0.68s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+}
+
+.value-scene > p { animation-range: entry 5% cover 20%; }
+.value-scene h4 { animation-range: entry 9% cover 24%; }
+.value-scene > div { animation-range: entry 13% cover 28%; }
+
+/* ---------- Improvement cycle ---------- */
+.field-cycle::after {
+  content: "";
+  position: absolute;
+  left: -20%;
+  bottom: -45%;
+  width: 60%;
+  aspect-ratio: 1;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  animation: dense-orbit-ring 24s linear infinite;
+  pointer-events: none;
+}
+
+.value-flow small,
+.value-flow h4,
+.value-flow p {
+  animation: dense-flow-content 0.58s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+}
+
+.value-flow small { animation-range: entry 5% cover 20%; }
+.value-flow h4 { animation-range: entry 9% cover 24%; }
+.value-flow p { animation-range: entry 13% cover 28%; }
+
+.value-flow li:hover h4 {
+  animation: dense-hover-title 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.cycle-conclusion b,
+.cycle-conclusion p {
+  display: block;
+  animation: dense-conclusion-child 0.68s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 8% cover 26%;
+}
+
+.cycle-conclusion p {
+  animation-name: dense-conclusion-child-right;
+  animation-range: entry 12% cover 30%;
+}
+
+/* ---------- Continue / footer ---------- */
+.continue {
+  position: relative;
+  overflow: visible;
+}
+
+.continue::before {
+  content: "";
+  position: absolute;
+  left: -22px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--chapter-accent);
+  transform: translateY(-50%);
+  animation: dense-next-dot 2.2s ease-in-out infinite;
+}
+
+.continue a {
+  position: relative;
+  overflow: hidden;
+}
+
+.continue a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 0 35%, rgba(255, 255, 255, 0.6) 50%, transparent 65% 100%);
+  transform: translateX(-135%);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.continue a:hover::after {
+  transform: translateX(135%);
+}
+
+.end {
+  position: relative;
+  overflow: hidden;
+  animation: footer-glint 6s linear infinite, dense-footer-rise 0.9s ease-out both;
+  animation-timeline: auto, view();
+  animation-range: normal, entry 0% cover 30%;
+}
+
+.end::before,
+.end::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+  animation: dense-footer-bracket 2.8s ease-in-out infinite;
+}
+
+.end::before { left: 3vw; }
+.end::after { right: 3vw; animation-delay: -1.4s; }
+
+/* ---------- Keyboard focus gets motion too ---------- */
+.gate a:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 5px;
+  animation: dense-focus-pop 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes dense-section-line {
+  to { transform: scaleX(1); }
+}
+
+@keyframes dense-article-marker {
+  from { opacity: 0; transform: scaleX(0) translateX(-18px); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes dense-logo-caption {
+  50% { opacity: 0.55; letter-spacing: 0.08em; transform: translateX(3px); }
+}
+
+@keyframes dense-hero-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes dense-hero-orb-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); border-radius: 50%; }
+  35% { transform: translate3d(-4vw, 3vh, 0) scale(1.08) rotate(12deg); border-radius: 46% 54% 58% 42%; }
+  70% { transform: translate3d(2vw, -2vh, 0) scale(0.96) rotate(-8deg); border-radius: 58% 42% 46% 54%; }
+}
+
+@keyframes dense-hero-orb-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(5vw, -4vh, 0) scale(1.13); }
+}
+
+@keyframes dense-orb-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  35% { transform: translate3d(-3vw, -3vh, 0) scale(1.08); }
+  70% { transform: translate3d(2vw, 2vh, 0) scale(0.93); }
+}
+
+@keyframes dense-orbit-ring {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dense-hero-rule {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes dense-side-copy {
+  50% { transform: translateY(-5px); letter-spacing: 0.035em; }
+}
+
+@keyframes dense-cta-ring {
+  0% { opacity: 0; transform: scale(0.82); }
+  35% { opacity: 0.6; }
+  100% { opacity: 0; transform: scale(1.28); }
+}
+
+@keyframes dense-photo-parallax {
+  from { transform: scale(1.12) translateY(-3%); }
+  to { transform: scale(1.04) translateY(3%); }
+}
+
+@keyframes dense-intro-light {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 0%; }
+}
+
+@keyframes dense-kicker-dot {
+  50% { transform: scale(1.45); opacity: 0.45; }
+}
+
+@keyframes dense-title-rise-left {
+  from { opacity: 0; transform: translate3d(-32px, 48px, 0) rotateY(8deg); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes dense-title-rise-right {
+  from { opacity: 0; transform: translate3d(32px, 48px, 0) rotateY(-8deg); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes dense-copy-dot {
+  to { transform: scale(1); }
+}
+
+@keyframes dense-text-glint {
+  0%, 55% { transform: translateX(-135%); }
+  80%, 100% { transform: translateX(135%); }
+}
+
+@keyframes dense-path-atmosphere {
+  0%, 100% { background-position: 0% 0%, 100% 100%; }
+  50% { background-position: 15% 12%, 82% 70%; }
+}
+
+@keyframes dense-path-scan {
+  0%, 30% { left: -18%; }
+  70%, 100% { left: 118%; }
+}
+
+@keyframes dense-index-number {
+  50% { transform: translateY(-4px) rotate(-7deg) scale(1.12); }
+}
+
+@keyframes dense-band-scan {
+  0%, 35% { left: -18%; }
+  72%, 100% { left: 118%; }
+}
+
+@keyframes dense-planet-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-5vw, 4vh, 0) scale(1.08); }
+}
+
+@keyframes dense-stamp-wander {
+  0%, 100% { transform: rotate(8deg) translate3d(0, 0, 0); }
+  45% { transform: rotate(-5deg) translate3d(-8px, 9px, 0) scale(1.04); }
+  75% { transform: rotate(12deg) translate3d(4px, -3px, 0); }
+}
+
+@keyframes dense-band-copy-swing {
+  from { opacity: 0; transform: translate3d(26px, 28px, 0) rotate(1deg); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes dense-fraction-pulse {
+  50% { opacity: 0.45; transform: translateX(4px); }
+}
+
+@keyframes dense-inline-rule {
+  to { transform: scaleX(1); }
+}
+
+@keyframes dense-paragraph-tail {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes dense-card-copy {
+  from { opacity: 0; transform: translateY(18px) skewY(2deg); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes dense-card-index {
+  50% { transform: translateX(5px) rotate(-8deg) scale(1.08); }
+}
+
+@keyframes dense-visual-rule {
+  to { transform: scaleX(1); }
+}
+
+@keyframes dense-diagram-number {
+  50% { transform: translateY(-3px) rotate(-8deg); opacity: 0.62; }
+}
+
+@keyframes dense-diagram-label {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes dense-comparison-head {
+  from { opacity: 0; transform: translateX(-24px); }
+}
+
+@keyframes dense-comparison-head-right {
+  from { opacity: 0; transform: translateX(24px); }
+}
+
+@keyframes dense-cell-left {
+  from { opacity: 0; transform: translateX(-22px); }
+}
+
+@keyframes dense-cell-right {
+  from { opacity: 0; transform: translateX(22px); }
+}
+
+@keyframes dense-scene-line {
+  from { opacity: 0; transform: translateY(20px); }
+}
+
+@keyframes dense-flow-content {
+  from { opacity: 0; transform: translateY(15px); }
+}
+
+@keyframes dense-hover-title {
+  50% { transform: translateX(7px); letter-spacing: -0.015em; }
+}
+
+@keyframes dense-conclusion-child {
+  from { opacity: 0; transform: translateX(-28px); }
+}
+
+@keyframes dense-conclusion-child-right {
+  from { opacity: 0; transform: translateX(28px); }
+}
+
+@keyframes dense-next-dot {
+  50% { transform: translate(10px, -50%) scale(1.3); opacity: 0.45; }
+}
+
+@keyframes dense-footer-rise {
+  from { opacity: 0; transform: translateY(24px); }
+}
+
+@keyframes dense-footer-bracket {
+  50% { width: 52px; opacity: 0.2; }
+}
+
+@keyframes dense-focus-pop {
+  50% { transform: translateY(-3px) scale(1.02); }
+}
+
+/* ---------- Keep phones lively without running every ambient layer ---------- */
+@media (max-width: 760px) {
+  .hero::before,
+  .hero::after,
+  .orb,
+  .planet,
+  .mission-stamp {
+    animation-duration: 14s !important;
+  }
+
+  .orb::after,
+  .planet::after,
+  .field-cycle::after,
+  .path::after {
+    display: none;
+  }
+
+  .journey-copy p::before {
+    left: -12px;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .gate,
+  .gate *,
+  .gate::before,
+  .gate::after,
+  .gate *::before,
+  .gate *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .gate * {
+    transform: none !important;
+  }
+}
