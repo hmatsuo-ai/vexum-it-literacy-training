@@ -57,6 +57,199 @@
   border-color: rgba(159,220,255,.17);
 }
 
+/* 01-C: applications visually sit on top of the OS instead of being shown as a comparison pair. */
+.m03u-software-group {
+  overflow: hidden;
+}
+
+.m03u-software-group .m03u-basic-group-head > p {
+  max-width: 56ch;
+}
+
+.m03u-software-visual {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.software-screen {
+  position: relative;
+  overflow: hidden;
+  padding: 0 clamp(20px, 2.4vw, 34px) clamp(24px, 2.7vw, 38px);
+  border: 1px solid rgba(159,220,255,.2);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 80% 8%, rgba(159,220,255,.12), transparent 30%),
+    linear-gradient(160deg, rgba(9,25,42,.96), rgba(4,14,25,.94));
+  box-shadow: 0 28px 80px rgba(0,0,0,.22), inset 0 1px rgba(255,255,255,.06);
+}
+
+.software-screen-head {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(255,255,255,.09);
+}
+
+.software-screen-head > span {
+  display: flex;
+  gap: 7px;
+}
+
+.software-screen-head > span i {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(237,247,255,.25);
+}
+
+.software-screen-head > span i:first-child { background: #ff7c95; }
+.software-screen-head > span i:nth-child(2) { background: #ffd467; }
+.software-screen-head > span i:nth-child(3) { background: var(--acid); }
+
+.software-screen-head small,
+.software-os-layer small {
+  color: rgba(237,247,255,.48);
+  font: 500 9px "DM Mono", monospace;
+  letter-spacing: .14em;
+}
+
+.software-app-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.5vw, 20px);
+  padding: clamp(30px, 4vw, 54px) 0 24px;
+}
+
+.software-app {
+  min-height: 132px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 22px;
+  background: rgba(255,255,255,.055);
+  box-shadow: inset 0 1px rgba(255,255,255,.04);
+}
+
+.software-app > b {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: #07111d;
+  font: 900 18px Montserrat, sans-serif;
+  background: var(--sky);
+}
+
+.software-app.app-doc > b { background: #b9adff; }
+.software-app.app-sheet > b { background: var(--acid); }
+.software-app.app-chat > b { background: #f6a0c8; }
+
+.software-app span {
+  min-width: 0;
+  display: grid;
+  gap: 7px;
+}
+
+.software-app strong {
+  color: #fff;
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.35;
+}
+
+.software-app small {
+  color: rgba(237,247,255,.58);
+  font-size: 12px;
+}
+
+.software-layer-arrow {
+  height: 70px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 3px;
+  color: var(--acid);
+}
+
+.software-layer-arrow span {
+  font: 600 10px "DM Mono", monospace;
+  letter-spacing: .12em;
+}
+
+.software-layer-arrow i {
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.software-os-layer {
+  min-height: 154px;
+  padding: clamp(22px, 2.6vw, 32px);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 22px;
+  align-items: center;
+  border: 1px solid rgba(213,255,95,.25);
+  border-radius: 24px;
+  background:
+    linear-gradient(90deg, rgba(213,255,95,.12), rgba(159,220,255,.07)),
+    rgba(3,13,22,.9);
+  box-shadow: 0 0 0 1px rgba(213,255,95,.03), 0 18px 50px rgba(0,0,0,.2);
+}
+
+.software-os-icon {
+  width: 72px;
+  height: 72px;
+  padding: 16px;
+  border-radius: 22px;
+  color: var(--acid);
+  background: rgba(213,255,95,.08);
+  border: 1px solid rgba(213,255,95,.2);
+}
+
+.software-os-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.software-os-layer > div:last-child {
+  display: grid;
+  gap: 7px;
+}
+
+.software-os-layer strong {
+  color: #fff;
+  font-size: clamp(1.5rem, 2.3vw, 2.65rem);
+  line-height: 1.1;
+}
+
+.software-os-layer strong i {
+  color: rgba(237,247,255,.34);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.software-os-layer p {
+  margin: 0;
+  color: rgba(237,247,255,.65);
+  line-height: 1.65;
+}
+
+@media (max-width: 980px) {
+  .software-app-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 760px) {
   .m03u-basic-group {
     padding: 22px;
@@ -74,5 +267,42 @@
 
   .m03u-basic-cards--pair {
     grid-template-columns: 1fr;
+  }
+
+  .m03u-software-group .m03u-basic-group-head > p {
+    max-width: none;
+  }
+
+  .software-screen {
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 24px;
+  }
+
+  .software-screen-head {
+    min-height: 50px;
+  }
+
+  .software-app-grid {
+    grid-template-columns: 1fr;
+    padding-top: 24px;
+  }
+
+  .software-app {
+    min-height: 92px;
+  }
+
+  .software-layer-arrow {
+    height: 58px;
+  }
+
+  .software-os-layer {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .software-os-icon {
+    width: 62px;
+    height: 62px;
   }
 }
