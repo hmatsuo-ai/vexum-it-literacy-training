@@ -1,0 +1,540 @@
+/*
+ * Motion language for the desktop-first Academy experience.
+ * Uses the repository pattern library: progress, masks, stagger, travel,
+ * depth, scanning light, orbiting accents and responsive micro-interactions.
+ */
+
+.gate::before {
+  content: "";
+  position: fixed;
+  z-index: 100;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, #ff4fa5, #ffe55b, #86c9ff, #bdf3c8);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: page-progress linear both;
+  animation-timeline: scroll(root block);
+}
+
+.gate > header {
+  animation: header-drop 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.logo i {
+  animation: logo-breathe 3.6s ease-in-out infinite;
+}
+
+.start {
+  position: relative;
+  overflow: hidden;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.start::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--ink);
+  transform: translateX(-105%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.start:hover {
+  color: #fff;
+  transform: translateY(-3px) rotate(-1deg);
+  box-shadow: 5px 6px 0 var(--pink);
+}
+
+.start:hover::before {
+  transform: none;
+}
+
+.hero-copy > p {
+  animation: hero-label-in 0.75s 0.12s both;
+}
+
+.hero-copy h1 {
+  clip-path: inset(0 100% 0 0);
+  animation: hero-title-wipe 1.15s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-copy h1 em {
+  display: inline-block;
+  animation: hero-emphasis 3.2s 1.2s ease-in-out infinite;
+}
+
+.hero-copy > div {
+  animation: hero-label-in 0.8s 0.65s both;
+}
+
+.marquee {
+  animation: ribbon-settle 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 25%;
+}
+
+.intro > p,
+.path > p {
+  animation: label-track-in 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 5% cover 28%;
+}
+
+.journey-title > span,
+.journey-title > em {
+  animation: title-line-rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+}
+
+.journey-title > span:nth-child(1) {
+  animation-range: entry 0% cover 17%;
+}
+
+.journey-title > span:nth-child(2) {
+  animation-range: entry 3% cover 21%;
+}
+
+.journey-title > span:nth-child(3) {
+  animation-range: entry 6% cover 25%;
+}
+
+.journey-title > em {
+  animation-range: entry 9% cover 29%;
+}
+
+.journey-copy p {
+  animation: copy-slide-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 5% cover 22%;
+}
+
+.journey-copy p:nth-child(2) {
+  animation-name: copy-slide-in-right;
+}
+
+.journey-copy strong {
+  background: linear-gradient(var(--yellow), var(--yellow)) left bottom / 0 5px no-repeat;
+  border-bottom: 0;
+  animation: underline-draw 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 8% cover 30%;
+}
+
+.path a {
+  animation: path-row-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 3% cover 18%;
+}
+
+.path a b {
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.path a small {
+  transition: letter-spacing 0.3s ease, transform 0.3s ease;
+}
+
+.path a:hover b {
+  color: #ec4fa0;
+  transform: rotate(-10deg) scale(1.2);
+}
+
+.path a:hover small {
+  letter-spacing: 0.04em;
+  transform: translateX(8px);
+}
+
+.path a i {
+  animation: arrow-travel 1.8s ease-in-out infinite;
+}
+
+.mission-band {
+  background-size: 160% 160% !important;
+  animation: chapter-gradient 9s ease-in-out infinite;
+}
+
+.mission-band > p {
+  animation: band-copy-in 0.65s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 2% cover 20%;
+}
+
+.mission-band h1 {
+  clip-path: inset(0 100% 0 0);
+  animation: band-title-wipe 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 4% cover 25%;
+}
+
+.mission-band h2 {
+  animation: band-copy-in 0.75s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 7% cover 28%;
+}
+
+.mission-band > strong {
+  animation: mission-number-land 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 5% cover 27%;
+}
+
+.future {
+  position: relative;
+  animation: future-in 0.7s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 4% cover 22%;
+}
+
+.future::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  width: 24%;
+  height: 3px;
+  background: var(--chapter-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: future-line 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 32%;
+}
+
+.copy > p {
+  animation: copy-slide-in 0.72s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 5% cover 23%;
+}
+
+.cards > div {
+  transform-origin: 50% 100%;
+  animation: learning-card-in 0.68s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 3% cover 20%;
+}
+
+.cards > div:nth-child(2n) {
+  animation-name: learning-card-in-alt;
+}
+
+.cards > div b {
+  transition: transform 0.3s ease;
+}
+
+.cards > div:hover b {
+  transform: translateX(8px) rotate(-6deg);
+}
+
+.chapter-visual {
+  animation: visual-panel-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 3% cover 21%;
+}
+
+.chapter-visual::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: -30% auto -30% -24%;
+  width: 18%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+  transform: skewX(-18deg);
+  animation: visual-scan 5.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.visual-copy > * {
+  animation: visual-copy-in 0.65s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 6% cover 24%;
+}
+
+.chapter-visual li {
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.chapter-visual li:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 9px 12px 0 color-mix(in srgb, var(--chapter-accent) 18%, transparent);
+}
+
+.value-scene {
+  animation: scene-depth-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 3% cover 22%;
+}
+
+.value-scene h4 em {
+  display: inline-block;
+  animation: scene-emphasis 2.8s ease-in-out infinite;
+}
+
+.field-cycle {
+  animation: cycle-panel-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 2% cover 18%;
+}
+
+.field-cycle::before {
+  animation: cycle-blob 8s ease-in-out infinite;
+}
+
+.cycle-intro > * {
+  animation: visual-copy-in 0.72s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 4% cover 21%;
+}
+
+.value-flow li {
+  animation: flow-card-in 0.68s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 3% cover 18%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-flow li:nth-child(2n) {
+  animation-name: flow-card-in-alt;
+}
+
+.value-flow li:hover {
+  transform: translateY(-9px) rotate(-0.7deg);
+  box-shadow: 10px 12px 0 rgba(255, 79, 165, 0.18);
+}
+
+.value-flow li:nth-child(2n):hover {
+  transform: translateY(-9px) rotate(0.7deg);
+}
+
+.value-flow li:not(:last-child)::after {
+  animation: flow-arrow 1.45s ease-in-out infinite;
+}
+
+.value-flow li b {
+  animation: flow-number 3s ease-in-out infinite;
+}
+
+.cycle-conclusion {
+  animation: conclusion-in 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 5% cover 25%;
+}
+
+.teaching p {
+  animation: note-in-left 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 4% cover 19%;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.teaching p:nth-child(2n) {
+  animation-name: note-in-right;
+}
+
+.teaching p:hover {
+  transform: translateX(10px);
+  box-shadow: -7px 0 0 color-mix(in srgb, var(--chapter-accent) 30%, transparent);
+}
+
+.continue a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 18px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  animation: continue-in 0.7s ease-out both, continue-pulse 3s 1s ease-in-out infinite;
+  animation-timeline: view(), auto;
+  animation-range: entry 5% cover 24%, normal;
+  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.continue a:hover {
+  color: #fff;
+  background: var(--chapter-accent);
+  transform: translateY(-5px) rotate(-1deg);
+}
+
+.continue a b {
+  animation: arrow-travel 1.55s ease-in-out infinite;
+}
+
+.end {
+  background-image: linear-gradient(90deg, #fff 0 40%, #86c9ff 50%, #fff 60% 100%);
+  background-size: 240% 100%;
+  background-clip: text;
+  color: transparent;
+  animation: footer-glint 6s linear infinite;
+}
+
+@keyframes page-progress {
+  to { transform: scaleX(1); }
+}
+
+@keyframes header-drop {
+  from { opacity: 0; transform: translateY(-24px); }
+}
+
+@keyframes logo-breathe {
+  50% { transform: rotate(-8deg) scale(1.12); box-shadow: 0 0 0 7px rgba(255, 143, 200, 0.18); }
+}
+
+@keyframes hero-label-in {
+  from { opacity: 0; transform: translateY(18px); letter-spacing: 0.28em; }
+}
+
+@keyframes hero-title-wipe {
+  to { clip-path: inset(0); }
+}
+
+@keyframes hero-emphasis {
+  50% { transform: translateX(10px) rotate(-1deg); }
+}
+
+@keyframes ribbon-settle {
+  from { opacity: 0; transform: rotate(-4deg) scale(1.08); }
+}
+
+@keyframes label-track-in {
+  from { opacity: 0; letter-spacing: 0.38em; transform: translateX(-24px); }
+}
+
+@keyframes title-line-rise {
+  from { opacity: 0; transform: translateY(48px) rotate(1.2deg); }
+}
+
+@keyframes copy-slide-in {
+  from { opacity: 0; transform: translateX(-34px); }
+}
+
+@keyframes copy-slide-in-right {
+  from { opacity: 0; transform: translateX(34px); }
+}
+
+@keyframes underline-draw {
+  from { opacity: 0; background-size: 0 5px; transform: translateY(20px); }
+  to { background-size: 100% 5px; }
+}
+
+@keyframes path-row-in {
+  from { opacity: 0; transform: translateX(-52px); }
+}
+
+@keyframes arrow-travel {
+  50% { transform: translateY(9px); }
+}
+
+@keyframes chapter-gradient {
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes band-copy-in {
+  from { opacity: 0; transform: translateY(28px); }
+}
+
+@keyframes band-title-wipe {
+  to { clip-path: inset(0); }
+}
+
+@keyframes mission-number-land {
+  from { opacity: 0; transform: translateY(-46px) rotate(14deg) scale(1.35); }
+}
+
+@keyframes future-in {
+  from { opacity: 0; transform: translateY(24px); }
+}
+
+@keyframes future-line {
+  to { transform: scaleX(1); }
+}
+
+@keyframes learning-card-in {
+  from { opacity: 0; transform: translateY(44px) rotate(-2deg) scale(0.95); }
+}
+
+@keyframes learning-card-in-alt {
+  from { opacity: 0; transform: translateY(44px) rotate(2deg) scale(0.95); }
+}
+
+@keyframes visual-panel-in {
+  from { opacity: 0; transform: translateY(52px) scale(0.97); border-radius: 52px; }
+}
+
+@keyframes visual-scan {
+  45%, 100% { left: 118%; }
+}
+
+@keyframes visual-copy-in {
+  from { opacity: 0; transform: translateY(28px); }
+}
+
+@keyframes scene-depth-in {
+  from { opacity: 0; transform: perspective(900px) rotateX(8deg) translateY(46px); }
+}
+
+@keyframes scene-emphasis {
+  50% { transform: translateY(-4px); color: var(--yellow); }
+}
+
+@keyframes cycle-panel-in {
+  from { opacity: 0; transform: translateY(58px) scale(0.975); }
+}
+
+@keyframes cycle-blob {
+  50% { transform: translate(-42px, 32px) scale(1.16); }
+}
+
+@keyframes flow-card-in {
+  from { opacity: 0; transform: translateX(-48px) rotate(-2deg) scale(0.96); }
+}
+
+@keyframes flow-card-in-alt {
+  from { opacity: 0; transform: translateX(48px) rotate(2deg) scale(0.96); }
+}
+
+@keyframes flow-arrow {
+  50% { transform: translate(8px, -50%); }
+}
+
+@keyframes flow-number {
+  50% { transform: rotate(-8deg) scale(1.14); }
+}
+
+@keyframes conclusion-in {
+  from { opacity: 0; transform: translateY(34px); }
+}
+
+@keyframes note-in-left {
+  from { opacity: 0; transform: translateX(-46px); }
+}
+
+@keyframes note-in-right {
+  from { opacity: 0; transform: translateX(46px); }
+}
+
+@keyframes continue-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.92); }
+}
+
+@keyframes continue-pulse {
+  50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--chapter-accent) 12%, transparent); }
+}
+
+@keyframes footer-glint {
+  to { background-position: -240% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gate *,
+  .gate::before,
+  .gate *::before,
+  .gate *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
