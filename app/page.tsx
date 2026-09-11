@@ -195,7 +195,7 @@ export default function Home() {
             <svg viewBox="0 0 1000 290" aria-hidden="true"><path d="M40 190 C180 30 330 260 470 120 S770 40 950 170" /></svg>
             {m(1).points.map((point, index) => <div key={point} className={`orbit-node n${index + 1}`}><b>0{index + 1}</b><span>{point}</span></div>)}
           </div>
-          <div className="m01-detail" data-reveal><p>{m(1).explain}</p><blockquote>{m(1).example}</blockquote></div>
+          <div className="m01-detail" data-reveal><p>現場で使われて初めて改善は完成します。<br/>既存ツールの導入、設定、使い方の説明も、必要な解決策です。</p><blockquote>{m(1).example}</blockquote></div>
         </div>
       </section>
 
