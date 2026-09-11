@@ -148,7 +148,7 @@
 }
 
 /* Keep the journey headline and explanation readable as two independent columns. */
-.intro {
+.intro.intro {
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(48px, 7vw, 112px);
 }
@@ -159,7 +159,7 @@
   font-size: clamp(3.4rem, 5.2vw, 6.4rem);
   line-height: 0.98;
 }
-.journey-title em span {
+.intro .journey-title em span {
   display: block;
   white-space: nowrap;
 }
