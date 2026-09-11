@@ -125,11 +125,6 @@ export default function Mission03Foundations() {
           <div><b>STORAGE</b><span>あとで使うもの</span><strong>保存 / 長期的</strong></div>
         </div>
       </section>
-
-      <aside className="m03u-final-check">
-        <small>CAN YOU EXPLAIN IT?</small>
-        <strong>「ファイルとフォルダ」「ローカルとクラウド」「メモリとストレージ」の違いを、自分の言葉で説明できる。</strong>
-      </aside>
     </div>,
     target,
   );
