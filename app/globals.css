@@ -256,8 +256,7 @@
 }
 .mission-section .future,
 .mission-section .continue a,
-.mission-section .cards b,
-.mission-section .teaching b {
+.mission-section .cards b {
   color: var(--chapter-accent);
 }
 .mission-section .cards div,
@@ -269,11 +268,6 @@
 .mission-section .cards div:nth-child(2n) {
   background: var(--chapter-card-b);
 }
-.mission-section .teaching p {
-  border-left-color: var(--chapter-accent);
-  background: color-mix(in srgb, var(--chapter-card-a) 70%, #fff);
-}
-
 .journey-title > span,
 .journey-title > em {
   display: block;
@@ -892,8 +886,7 @@ a {
 .cards div:nth-child(2n) {
   background: #fff1f8;
 }
-.cards b,
-.teaching b {
+.cards b {
   font: 11px "DM Mono";
   color: #d2468d;
 }
@@ -1104,19 +1097,6 @@ a {
   margin: 0;
   color: rgba(255, 255, 255, 0.78);
   line-height: 1.85;
-}
-.teaching {
-  margin-top: 35px;
-}
-.teaching p {
-  padding: 18px 20px;
-  border-left: 4px solid var(--pink);
-  background: #fff9ee;
-  margin: 10px 0;
-}
-.teaching b {
-  display: block;
-  margin-bottom: 6px;
 }
 .continue {
   margin-top: 50px;

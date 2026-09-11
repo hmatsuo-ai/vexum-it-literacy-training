@@ -603,32 +603,6 @@ export default function Home() {
                     </div>
                   </section>
                 )}
-                <section className="teaching">
-                  <p>
-                    <b>{teachingLabels[index].why}</b>
-                    {depth[index].why}
-                  </p>
-                  <p>
-                    <b>{teachingLabels[index].explain}</b>
-                    {m.explain}
-                  </p>
-                  <p>
-                    <b>{teachingLabels[index].example}</b>
-                    {m.example}
-                  </p>
-                  <p>
-                    <b>{teachingLabels[index].work}</b>
-                    {depth[index].work}
-                  </p>
-                  <p>
-                    <b>{teachingLabels[index].miss}</b>
-                    {depth[index].miss}
-                  </p>
-                  <p>
-                    <b>{teachingLabels[index].check}</b>
-                    {m.check}
-                  </p>
-                </section>
               </div>
               <div className="continue">
                 {index < 7 ? (

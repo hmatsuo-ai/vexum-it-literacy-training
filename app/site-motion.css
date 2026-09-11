@@ -325,22 +325,6 @@
   animation-range: entry 5% cover 25%;
 }
 
-.teaching p {
-  animation: note-in-left 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-timeline: view();
-  animation-range: entry 4% cover 19%;
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
-}
-
-.teaching p:nth-child(2n) {
-  animation-name: note-in-right;
-}
-
-.teaching p:hover {
-  transform: translateX(10px);
-  box-shadow: -7px 0 0 color-mix(in srgb, var(--chapter-accent) 30%, transparent);
-}
-
 .continue a {
   display: inline-flex;
   align-items: center;
