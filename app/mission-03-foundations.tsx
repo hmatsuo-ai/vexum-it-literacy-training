@@ -42,7 +42,7 @@ export default function Mission03Foundations() {
         <div>
           <p>PC BASICS — START FROM ZERO</p>
           <h2>IT・PCの基礎を、<br/><em>「机」に置き換えて理解する。</em></h2>
-          <p className="m03u-lead">ファイルとフォルダ → ローカルとクラウド → CPU / GPU → メモリ → ストレージ。まずは「データの形」と「保存場所」を分けて考えます。</p>
+          <p className="m03u-lead">ファイルとフォルダ → ローカルとクラウド → OSとアプリ → CPU / GPU → メモリ → ストレージ。まずは役割の違いを分けて考えます。</p>
         </div>
         <div className="m03u-desk" aria-hidden="true">
           <div className="desk-folder"><TechIcon name="folder"/><span>仕事</span></div>
@@ -96,6 +96,26 @@ export default function Mission03Foundations() {
                 <div className="m03u-icon cloud"><TechIcon name="cloud"/></div>
                 <small>CLOUD</small><h4>インターネット上に保存</h4>
                 <p>Google Drive、OneDrive、iCloudなど。オンラインに保存され、別の端末から開いたり、他の人と共有したりできます。</p>
+              </article>
+            </div>
+          </section>
+
+          <section className="m03u-basic-group">
+            <div className="m03u-basic-group-head">
+              <small>01-C / SOFTWARE</small>
+              <h4>OSとアプリケーション</h4>
+              <p>OSはPC全体を動かす土台、アプリはその上で目的ごとの作業をする道具です。不具合が起きたときも、この2つを分けて考えると原因を切り分けやすくなります。</p>
+            </div>
+            <div className="m03u-basic-cards m03u-basic-cards--pair">
+              <article>
+                <div className="m03u-icon local"><TechIcon name="cpu"/></div>
+                <small>OS</small><h4>PC全体を動かす基本ソフト</h4>
+                <p>WindowsやmacOSなど。画面・キーボード・ファイル・メモリなどを管理し、アプリが動くための共通の環境を用意します。</p>
+              </article>
+              <article>
+                <div className="m03u-icon file"><TechIcon name="file"/></div>
+                <small>APPLICATION</small><h4>目的ごとの作業をするソフト</h4>
+                <p>文書作成、表計算、Web閲覧などを担当します。Word / Googleドキュメント、Excel / Googleスプレッドシート、Chrome / Edge / Safariなどが代表例です。</p>
               </article>
             </div>
           </section>
