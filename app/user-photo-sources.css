@@ -1,5 +1,6 @@
 /* User-provided city photos only.
  * Loaded last: every visible photographic layer is sourced from the user's uploads.
+ * Background photography stays fixed to the viewport; text/cards/foreground scroll above it.
  */
 
 /* Continuous fixed backdrop used behind translucent sections. */
@@ -11,14 +12,27 @@ body::before {
   background-position: center center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
 }
 
-.hero-photo {
-  display: block !important;
-  background-image: url('/images/user-dotonbori-night.jpg') !important;
+/* Hero photo is a viewport-locked image layer. */
+.hero-cinematic {
+  background-color: #070b12 !important;
+  background-image:
+    linear-gradient(90deg, rgba(5, 8, 14, .80), rgba(5, 8, 14, .33) 52%, rgba(5, 8, 14, .12)),
+    linear-gradient(0deg, rgba(5, 8, 14, .72), transparent 58%),
+    url('/images/user-dotonbori-night.jpg') !important;
   background-position: center 48% !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+.hero-photo {
+  display: none !important;
+  background: none !important;
+  animation: none !important;
+  transform: none !important;
 }
 
 .manifesto {
@@ -55,23 +69,43 @@ body::before {
   background: none !important;
 }
 
+/* Mission 02 keeps the split layout, but the city photo itself is locked to the viewport.
+ * The panel, headings, cards and labels remain normal scrolling foreground content. */
 .m02-photo {
   background-image:
-    linear-gradient(0deg, rgba(7, 11, 18, 0.24), rgba(7, 11, 18, 0.05)),
+    linear-gradient(0deg, rgba(7, 11, 18, 0.38), rgba(7, 11, 18, 0.08)),
     url('/images/user-namba-station.jpg') !important;
-  background-position: center center !important;
-  background-size: cover !important;
+  background-position: left center !important;
+  background-size: 100vw auto !important;
   background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
   filter: none !important;
 }
 
+/* Prevent decorative section layers from behaving like moving background images. */
+.hero-grid,
+.tech-grid,
+.token-rain,
+.security-scan {
+  background-attachment: fixed;
+}
+
 @media (max-width: 760px) {
+  /* iOS/Safari handles background-attachment: fixed unreliably.
+   * The site-wide fixed pseudo-element remains the fallback background layer. */
+  .hero-cinematic,
   .manifesto,
-  .m01 {
+  .m01,
+  .m02-photo {
     background-attachment: scroll !important;
   }
 
   .m01 {
     background-position: 58% center !important;
+  }
+
+  .m02-photo {
+    background-position: center center !important;
+    background-size: cover !important;
   }
 }
