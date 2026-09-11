@@ -4,3 +4,4 @@ out/
 .sites-runtime/
 AGENTS.md
 CLAUDE.md
+.vercel
