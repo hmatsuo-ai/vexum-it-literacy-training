@@ -42,7 +42,7 @@ export default function Mission03Foundations() {
         <div>
           <p>PC BASICS — START FROM ZERO</p>
           <h2>IT・PCの基礎を、<br/><em>「机」に置き換えて理解する。</em></h2>
-          <p className="m03u-lead">ファイルとフォルダ → CPU / GPU → メモリ → ストレージ。まずは「何がどこにあり、何が何をしているか」だけをつかみます。</p>
+          <p className="m03u-lead">ファイルとフォルダ → ローカルとクラウド → CPU / GPU → メモリ → ストレージ。まずは「データの形」と「保存場所」を分けて考えます。</p>
         </div>
         <div className="m03u-desk" aria-hidden="true">
           <div className="desk-folder"><TechIcon name="folder"/><span>仕事</span></div>
@@ -55,25 +55,50 @@ export default function Mission03Foundations() {
       <section className="m03u-basics">
         <div className="m03u-section-title">
           <small>01 / DATA BASICS</small>
-          <h3>まず、ファイルとフォルダ。</h3>
-          <p>PCで扱う情報は、基本的に「ファイル」を「フォルダ」に整理して保存します。</p>
+          <h3>「形」と「保存場所」は別もの。</h3>
+          <p>ファイル / フォルダはデータの形、ローカル / クラウドは保存場所の違いです。混ぜずに2つに分けて理解します。</p>
         </div>
-        <div className="m03u-basic-cards">
-          <article>
-            <div className="m03u-icon folder"><TechIcon name="folder"/></div>
-            <small>FOLDER</small><h4>ファイルをまとめる入れ物</h4>
-            <p>「大学」「仕事」「写真」のように、関連するファイルを整理する箱。フォルダの中にフォルダも作れます。</p>
-          </article>
-          <article>
-            <div className="m03u-icon file"><TechIcon name="file"/></div>
-            <small>FILE</small><h4>中身を持つ1つのデータ</h4>
-            <p>PDF、Excel、画像、動画など。<code>.pdf</code> や <code>.xlsx</code> の末尾は、ファイルの種類を表します。</p>
-          </article>
-          <article>
-            <div className="m03u-icon cloud"><TechIcon name="cloud"/></div>
-            <small>CLOUD</small><h4>インターネット上の保存場所</h4>
-            <p>Google Driveなど。PC本体ではなくオンラインに保存され、別の端末や他の人と共有できます。</p>
-          </article>
+
+        <div className="m03u-basic-groups">
+          <section className="m03u-basic-group">
+            <div className="m03u-basic-group-head">
+              <small>01-A / STRUCTURE</small>
+              <h4>ファイルとフォルダ</h4>
+              <p>「何を保存しているか」「どう整理しているか」の違いです。</p>
+            </div>
+            <div className="m03u-basic-cards m03u-basic-cards--pair">
+              <article>
+                <div className="m03u-icon folder"><TechIcon name="folder"/></div>
+                <small>FOLDER</small><h4>ファイルをまとめる入れ物</h4>
+                <p>「大学」「仕事」「写真」のように、関連するファイルを整理する箱。フォルダの中にフォルダも作れます。</p>
+              </article>
+              <article>
+                <div className="m03u-icon file"><TechIcon name="file"/></div>
+                <small>FILE</small><h4>中身を持つ1つのデータ</h4>
+                <p>PDF、Excel、画像、動画など。<code>.pdf</code> や <code>.xlsx</code> の末尾は、ファイルの種類を表します。</p>
+              </article>
+            </div>
+          </section>
+
+          <section className="m03u-basic-group">
+            <div className="m03u-basic-group-head">
+              <small>01-B / LOCATION</small>
+              <h4>ローカルとクラウド</h4>
+              <p>同じファイルでも、「どこに保存しているか」で扱い方が変わります。</p>
+            </div>
+            <div className="m03u-basic-cards m03u-basic-cards--pair">
+              <article>
+                <div className="m03u-icon local"><TechIcon name="storage"/></div>
+                <small>LOCAL</small><h4>自分のPC本体に保存</h4>
+                <p>デスクトップ、Downloads、Documents、内蔵SSDなど。このPCのストレージに保存され、基本的にはその端末から使います。</p>
+              </article>
+              <article>
+                <div className="m03u-icon cloud"><TechIcon name="cloud"/></div>
+                <small>CLOUD</small><h4>インターネット上に保存</h4>
+                <p>Google Drive、OneDrive、iCloudなど。オンラインに保存され、別の端末から開いたり、他の人と共有したりできます。</p>
+              </article>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -105,25 +130,25 @@ export default function Mission03Foundations() {
         <div className="m03u-section-title">
           <small>03 / REAL SCENE</small>
           <h3>「GPTにファイルを渡す」を分解すると。</h3>
-          <p>AIを使うときも、実際には「どこにあるファイルを、どのサービスへ渡すか」を判断しています。</p>
+          <p>AIを使うときも、実際には「ローカルかクラウドか」「どのフォルダにあるか」「どのファイルを渡すか」を判断しています。</p>
         </div>
         <div className="m03u-flow-line">
-          <div className="flow-node"><div className="m03u-icon"><TechIcon name="folder"/></div><small>STEP 1</small><b>フォルダを探す</b><span>Downloads / Drive など</span></div>
+          <div className="flow-node"><div className="m03u-icon"><TechIcon name="folder"/></div><small>STEP 1</small><b>保存場所を探す</b><span>Downloads / Drive など</span></div>
           <i>→</i>
           <div className="flow-node"><div className="m03u-icon"><TechIcon name="file"/></div><small>STEP 2</small><b>ファイルを選ぶ</b><span>内容・拡張子を確認</span></div>
           <i>→</i>
           <div className="flow-node gpt"><div className="m03u-icon"><TechIcon name="gpt"/></div><small>STEP 3</small><b>GPTへ添付</b><span>渡してよい情報か確認</span></div>
         </div>
         <div className="m03u-checks">
-          <span>✓ どこに保存されている？</span>
-          <span>✓ どのアカウントで開いている？</span>
+          <span>✓ ローカル？クラウド？</span>
+          <span>✓ どのフォルダ・どのアカウント？</span>
           <span>✓ 個人情報・機密情報は含まれない？</span>
         </div>
       </section>
 
       <aside className="m03u-final-check">
         <small>CAN YOU EXPLAIN IT?</small>
-        <strong>「メモリとストレージの違い」と「フォルダからファイルを選んでGPTへ渡す流れ」を、自分の言葉で説明できる。</strong>
+        <strong>「ファイルとフォルダ」「ローカルとクラウド」「メモリとストレージ」の違いを、自分の言葉で説明できる。</strong>
       </aside>
     </div>,
     target,
