@@ -147,6 +147,38 @@
   max-width: 850px;
 }
 
+/* Keep the journey headline and explanation readable as two independent columns. */
+.intro {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(48px, 7vw, 112px);
+}
+.intro > * {
+  min-width: 0;
+}
+.intro .journey-title {
+  font-size: clamp(3.4rem, 5.2vw, 6.4rem);
+  line-height: 0.98;
+}
+.journey-title em span {
+  display: block;
+  white-space: nowrap;
+}
+.journey-copy {
+  align-self: center;
+  width: 100%;
+  max-width: 680px;
+}
+
+@media (max-width: 700px) {
+  .intro .journey-title {
+    font-size: clamp(2.8rem, 13vw, 4.6rem);
+    line-height: 1.02;
+  }
+  .journey-copy {
+    max-width: none;
+  }
+}
+
 /* Each mission has its own visual climate while sharing one learning rhythm. */
 .mission-section {
   --chapter-accent: #d13f89;
