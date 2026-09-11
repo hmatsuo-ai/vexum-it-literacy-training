@@ -480,6 +480,132 @@ a {
   background: #282a58;
   color: white;
 }
+.value-difference {
+  margin: 54px 0 42px;
+  padding: clamp(28px, 5vw, 54px);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: linear-gradient(145deg, #ffffff 0%, #fff8ee 52%, #f2f9ff 100%);
+  box-shadow: 12px 14px 0 rgba(32, 33, 61, 0.08);
+}
+.value-kicker {
+  margin: 0 0 12px;
+  color: #d2468d;
+  font: 700 12px "DM Mono";
+  letter-spacing: 0.08em;
+}
+.value-difference h3 {
+  margin: 0;
+  font:
+    800 clamp(2rem, 5vw, 3.6rem) / 1.1 Montserrat,
+    "Noto Sans JP";
+  letter-spacing: -0.05em;
+}
+.value-intro {
+  max-width: 720px;
+  margin: 22px 0 38px;
+  line-height: 1.9;
+}
+.comparison-head,
+.comparison-row {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr 1fr;
+  gap: 16px;
+}
+.comparison-head {
+  padding: 0 16px 12px;
+  color: #6a6b7d;
+  font-size: 13px;
+}
+.comparison-row {
+  padding: 22px 16px;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+.comparison-row > strong {
+  font-size: 15px;
+}
+.comparison-row p {
+  margin: 0;
+  line-height: 1.75;
+}
+.comparison-row p:last-child {
+  padding: 16px 18px;
+  margin-top: -16px;
+  border-radius: 16px;
+  background: #fff0f7;
+  font-weight: 700;
+}
+.comparison-row small {
+  display: none;
+  margin-bottom: 7px;
+  color: #d2468d;
+  font: 700 12px "DM Mono";
+  letter-spacing: 0.08em;
+}
+.value-scene {
+  margin-top: 32px;
+  padding: clamp(24px, 4vw, 40px);
+  border-radius: 22px;
+  background: var(--ink);
+  color: #fff;
+}
+.value-scene > p {
+  margin: 0 0 12px;
+  color: var(--lime);
+  font: 700 12px "DM Mono";
+  letter-spacing: 0.06em;
+}
+.value-scene h4 {
+  margin: 0 0 22px;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.45;
+}
+.value-scene h4 em {
+  color: var(--lime);
+  font-style: normal;
+}
+.value-scene div {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.9;
+}
+.value-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.value-flow li {
+  position: relative;
+  min-height: 94px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #eef8ff;
+}
+.value-flow li:nth-child(2n) {
+  background: #fff0f7;
+}
+.value-flow li:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  z-index: 2;
+  right: -9px;
+  top: 35px;
+  color: #d2468d;
+  font-weight: 800;
+}
+.value-flow b {
+  display: block;
+  margin-bottom: 12px;
+  color: #d2468d;
+  font: 700 11px "DM Mono";
+}
+.value-flow span {
+  font-size: 14px;
+  font-weight: 700;
+}
 .teaching {
   margin-top: 35px;
 }
@@ -559,6 +685,36 @@ a {
   }
   .cards {
     grid-template-columns: 1fr;
+  }
+  .value-difference {
+    margin-inline: -2vw;
+    padding: 28px 20px;
+    border-radius: 22px;
+  }
+  .comparison-head {
+    display: none;
+  }
+  .comparison-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px 0;
+  }
+  .comparison-row p {
+    padding: 16px 18px;
+    border-radius: 16px;
+    background: #f3f3f5;
+  }
+  .comparison-row p:last-child {
+    margin-top: 0;
+  }
+  .comparison-row small {
+    display: block;
+  }
+  .value-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .value-flow li:nth-child(2n)::after {
+    display: none;
   }
 }
 

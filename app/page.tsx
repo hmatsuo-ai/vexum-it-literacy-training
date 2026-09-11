@@ -273,6 +273,42 @@ const teachingLabels = [
     check: "安全な流れを話す",
   },
 ];
+
+const vexumComparison = [
+  {
+    focus: "顧客との距離",
+    project: "決められた期間と会議の中で、案件を前へ進める",
+    vexum: "日々の業務に近い場所で、小さな変化まで見届ける",
+  },
+  {
+    focus: "課題の出発点",
+    project: "整理された相談や、明確な要件から始まることが多い",
+    vexum:
+      "手作業・二重入力・属人化など、まだ言葉になっていない困りごとから探す",
+  },
+  {
+    focus: "解決手段",
+    project: "調査、要件定義、製品導入、開発などを案件に合わせて行う",
+    vexum:
+      "既存ツールで足りるなら活かし、不足する部分だけをつくる。説明や運用の見直しも選択肢にする",
+  },
+  {
+    focus: "成功の基準",
+    project: "決めた要件を満たし、導入やプロジェクトを完了させる",
+    vexum: "現場で実際に使われ、時間・品質・コストが良くなったかを確かめる",
+  },
+];
+
+const vexumFlow = [
+  "聞く",
+  "観察する",
+  "課題を整理する",
+  "手段を選ぶ",
+  "導入・開発する",
+  "使い方を伝える",
+  "結果を見る",
+  "改善する",
+];
 export default function Home() {
   return (
     <main className="gate">
@@ -396,6 +432,53 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
+                {index === 0 && (
+                  <section className="value-difference">
+                    <p className="value-kicker">PROJECT-BASED / FIELD-LED</p>
+                    <h3>同じIT支援でも、重心が違う。</h3>
+                    <p className="value-intro">
+                      一般的なITコンサルにも、現場に深く入る会社や担当者はいます。ここで比べるのは優劣ではなく、典型的なプロジェクト型支援と、VEXUMが特に大切にする現場伴走型支援の違いです。
+                    </p>
+                    <div className="comparison-head" aria-hidden="true">
+                      <span />
+                      <b>プロジェクト型IT支援に多い形</b>
+                      <b>VEXUMが重視する形</b>
+                    </div>
+                    <div className="comparison-list">
+                      {vexumComparison.map((item) => (
+                        <div className="comparison-row" key={item.focus}>
+                          <strong>{item.focus}</strong>
+                          <p>
+                            <small>PROJECT</small>
+                            {item.project}
+                          </p>
+                          <p>
+                            <small>VEXUM</small>
+                            {item.vexum}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="value-scene">
+                      <p>たとえば、毎月80時間かかる集計業務。</p>
+                      <h4>
+                        「システムを納品する」ではなく、
+                        <em>「80時間を実際に減らす」</em>ところまで考える。
+                      </h4>
+                      <div>
+                        入力方法が人によって違うなら、まずルールをそろえる。既存の表計算やフォームで解決できるなら、それを設定する。足りない処理だけを自動化し、使う人へ説明する。運用後に時間が減ったかを確かめ、残った負担をまた改善する。VEXUMの価値は、技術そのものではなく、この変化を最後までつなぐことにあります。
+                      </div>
+                    </div>
+                    <ol className="value-flow" aria-label="VEXUMの改善の流れ">
+                      {vexumFlow.map((step, stepIndex) => (
+                        <li key={step}>
+                          <b>{String(stepIndex + 1).padStart(2, "0")}</b>
+                          <span>{step}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  </section>
+                )}
                 <section className="teaching">
                   <p>
                     <b>{teachingLabels[index].why}</b>
