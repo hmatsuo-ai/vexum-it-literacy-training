@@ -1,0 +1,561 @@
+/* Mission 03 — motion layer
+ * Based on the repository motion research in docs/design/patterns/animation-patterns-100.md.
+ * Uses: view entrance, stagger, heading clip reveal, gradient drift, breathing orb,
+ * connection flow, hover lift, scan line, and directional arrows.
+ */
+
+.m03-upgrade {
+  isolation: isolate;
+  background-size: 120% 120%, 125% 125%, 100% 100%;
+  animation: m03-atmosphere 14s ease-in-out infinite alternate;
+}
+
+.m03-upgrade::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -20%;
+  bottom: -20%;
+  left: -22%;
+  width: 11%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(143,220,255,.07), rgba(223,255,88,.08), transparent);
+  filter: blur(10px);
+  transform: skewX(-18deg);
+  animation: m03-chapter-scan 11s ease-in-out infinite;
+}
+
+.m03u-meta {
+  animation: m03-meta-enter .7s .05s cubic-bezier(.16,1,.3,1) both;
+}
+
+.m03u-hero > div:first-child > p:first-child {
+  position: relative;
+  width: fit-content;
+  animation: m03-kicker-enter .72s .14s cubic-bezier(.16,1,.3,1) both;
+}
+
+.m03u-hero > div:first-child > p:first-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sky), var(--acid), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: m03-rule-sweep .9s .55s cubic-bezier(.16,1,.3,1) both;
+}
+
+.m03u-hero h2 {
+  clip-path: inset(0 0 100% 0);
+  animation: m03-title-reveal 1.05s .22s cubic-bezier(.16,1,.3,1) both;
+}
+
+.m03u-hero h2 em {
+  display: inline-block;
+  text-shadow: 0 0 0 rgba(223,255,88,0);
+  animation: m03-acid-breathe 4.2s 1.15s ease-in-out infinite;
+}
+
+.m03u-lead {
+  animation: m03-copy-enter .8s .55s cubic-bezier(.16,1,.3,1) both;
+}
+
+.m03u-desk {
+  animation:
+    m03-desk-enter 1s .28s cubic-bezier(.16,1,.3,1) both,
+    m03-desk-glow 7s 1.35s ease-in-out infinite;
+}
+
+.m03u-desk::before {
+  animation: m03-work-label 3.8s 1.2s ease-in-out infinite;
+}
+
+.m03u-desk::after {
+  background-size: 220% 100%;
+  animation: m03-desk-line 3.6s 1s linear infinite;
+}
+
+.desk-folder {
+  animation: m03-folder-float 6.2s 1.1s ease-in-out infinite;
+}
+
+.file-a {
+  animation: m03-file-a-float 5.4s 1.35s ease-in-out infinite;
+}
+
+.file-b {
+  animation: m03-file-b-float 6.8s 1.6s ease-in-out infinite;
+}
+
+.desk-gpt {
+  animation: m03-gpt-breathe 3.4s 1.25s ease-in-out infinite;
+}
+
+.desk-gpt::after {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  border: 1px solid rgba(223,255,88,.25);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: m03-gpt-ring 3.4s 1.25s ease-out infinite;
+}
+
+.m03u-section-title h3,
+.m03u-basic-group-head h4,
+.m03u-transfer-head h4,
+.m03u-sync-head > h4,
+.m03-shortcuts__head h3,
+.m03-accounts__head h3 {
+  position: relative;
+}
+
+.m03u-section-title h3::after,
+.m03u-basic-group-head h4::after,
+.m03u-transfer-head h4::after,
+.m03u-sync-head > h4::after {
+  content: "";
+  display: block;
+  width: clamp(46px, 6vw, 94px);
+  height: 3px;
+  margin-top: 15px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--acid), var(--sky), transparent);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.m03u-basic-cards article,
+.hw-card,
+.transfer-place,
+.m03u-sync-diagram article,
+.m03u-sync-examples > div,
+.m03-account-identity,
+.m03-account-rule {
+  transition:
+    transform .32s cubic-bezier(.16,1,.3,1),
+    border-color .32s ease,
+    background .32s ease,
+    box-shadow .32s ease;
+}
+
+.m03u-basic-cards article:hover,
+.transfer-place:hover,
+.m03u-sync-diagram article:hover,
+.m03u-sync-examples > div:hover,
+.m03-account-identity:hover,
+.m03-account-rule:hover {
+  transform: translateY(-7px);
+  border-color: rgba(223,255,88,.3);
+  box-shadow: 0 25px 64px rgba(0,0,0,.22), inset 0 1px rgba(255,255,255,.06);
+}
+
+.m03u-basic-cards article:hover .m03u-icon,
+.hw-card:hover .m03u-icon,
+.transfer-place:hover svg {
+  transform: translateY(-4px) scale(1.06);
+}
+
+.m03u-icon,
+.transfer-place svg {
+  transition: transform .32s cubic-bezier(.16,1,.3,1), filter .32s ease;
+}
+
+/* LOCAL ↔ CLOUD: the connector itself stays alive so the relationship reads instantly. */
+.m03u-basic-groups > .m03u-basic-group:nth-child(2) .m03u-basic-cards--pair::before {
+  animation: m03-bridge-pulse 3s ease-in-out infinite;
+}
+
+.m03u-basic-groups > .m03u-basic-group:nth-child(2) .m03u-basic-cards--pair::after {
+  background-size: 240% 100%;
+  animation: m03-bridge-flow 2.8s linear infinite;
+}
+
+.m03u-basic-groups > .m03u-basic-group:nth-child(2) article:first-child .m03u-icon {
+  animation: m03-local-icon 4.8s ease-in-out infinite;
+}
+
+.m03u-basic-groups > .m03u-basic-group:nth-child(2) article:nth-child(2) .m03u-icon {
+  animation: m03-cloud-icon 5.2s -1.4s ease-in-out infinite;
+}
+
+/* Software stack: apps hover independently, OS remains the stable base. */
+.software-app {
+  transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s ease, box-shadow .3s ease;
+}
+
+.software-app:hover {
+  transform: translateY(-6px) rotate(-.6deg);
+  box-shadow: 0 18px 42px rgba(0,0,0,.2);
+}
+
+.software-app:nth-child(1) { animation: m03-app-float 5.2s ease-in-out infinite; }
+.software-app:nth-child(2) { animation: m03-app-float 5.8s -.9s ease-in-out infinite; }
+.software-app:nth-child(3) { animation: m03-app-float 6.1s -1.8s ease-in-out infinite; }
+.software-app:nth-child(4) { animation: m03-app-float 5.5s -2.6s ease-in-out infinite; }
+
+.software-layer-arrow i {
+  display: inline-block;
+  animation: m03-down-arrow 1.8s ease-in-out infinite;
+}
+
+.software-os-layer {
+  animation: m03-os-breathe 5.4s ease-in-out infinite;
+}
+
+/* Upload / download: motion follows the real direction of the file. */
+.transfer-arrow::before {
+  background-size: 230% 100%;
+  animation: m03-arrow-flow 2.2s linear infinite;
+}
+
+.transfer-arrow.download::before {
+  animation-direction: reverse;
+}
+
+.transfer-arrow.upload {
+  animation: m03-upload-nudge 2.7s ease-in-out infinite;
+}
+
+.transfer-arrow.download {
+  animation: m03-download-nudge 2.7s .45s ease-in-out infinite;
+}
+
+.transfer-place svg {
+  animation: m03-transfer-icon 4.8s ease-in-out infinite;
+}
+
+.transfer-cloud svg { animation-delay: -2.1s; }
+
+.m03u-transfer-note {
+  animation: m03-note-pulse 4.6s ease-in-out infinite;
+}
+
+/* Hardware cards get subtle live icons, without moving the body copy. */
+.hw-card .m03u-icon {
+  animation: m03-hardware-icon 4.8s ease-in-out infinite;
+}
+
+.hw-card:nth-child(2) .m03u-icon { animation-delay: -1.1s; }
+.hw-card:nth-child(3) .m03u-icon { animation-delay: -2.2s; }
+.hw-card:nth-child(4) .m03u-icon { animation-delay: -3.3s; }
+
+.m03u-memory-rule > i {
+  animation: m03-memory-pulse 2.6s ease-in-out infinite;
+}
+
+/* Sync diagram: arrows pulse in sequence to show propagation between devices. */
+.m03u-sync-arrow b {
+  display: inline-block;
+  animation: m03-sync-arrow 2.4s ease-in-out infinite;
+}
+
+.m03u-sync-arrow:nth-of-type(4) b {
+  animation-delay: -1.2s;
+}
+
+.m03u-sync-diagram article.cloud {
+  animation: m03-sync-cloud 5s ease-in-out infinite;
+}
+
+/* Keyboard section: small key press motion makes the shortcuts feel tactile. */
+.m03-shortcuts kbd {
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+.m03-shortcuts__grid article:hover kbd:first-child,
+.m03-shortcuts__control:hover kbd:first-child {
+  transform: translateY(3px);
+  box-shadow: 0 7px 16px rgba(0,0,0,.18);
+  border-bottom-width: 2px;
+}
+
+/* Account switch: keep the existing swap motion and add emphasis to identities. */
+.m03-account-identity > span {
+  animation: m03-account-avatar 4.4s ease-in-out infinite;
+}
+
+.m03-account-identity.work > span { animation-delay: -2.2s; }
+
+@supports (animation-timeline: view()) {
+  .m03u-section-title,
+  .m03u-basic-group,
+  .m03u-transfer,
+  .m03u-memory-rule,
+  .m03u-sync-section,
+  .m03-shortcuts__head,
+  .m03-accounts__head {
+    animation: m03-view-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 24%;
+  }
+
+  .m03u-basic-group:nth-child(2),
+  .m03u-sync-section { animation-range: entry 4% cover 27%; }
+  .m03u-basic-group:nth-child(3),
+  .m03u-transfer { animation-range: entry 7% cover 30%; }
+
+  .m03u-section-title h3::after,
+  .m03u-basic-group-head h4::after,
+  .m03u-transfer-head h4::after,
+  .m03u-sync-head > h4::after {
+    animation: m03-rule-sweep linear both;
+    animation-timeline: view();
+    animation-range: entry 8% cover 28%;
+  }
+
+  .hw-card,
+  .m03u-sync-diagram article,
+  .m03u-sync-examples > div {
+    animation: m03-card-enter linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 22%;
+  }
+
+  .hw-card:nth-child(2),
+  .m03u-sync-diagram article:nth-child(3),
+  .m03u-sync-examples > div:nth-child(2) { animation-range: entry 4% cover 25%; }
+
+  .hw-card:nth-child(3),
+  .m03u-sync-diagram article:nth-child(5),
+  .m03u-sync-examples > div:nth-child(3) { animation-range: entry 8% cover 28%; }
+
+  .hw-card:nth-child(4) { animation-range: entry 12% cover 31%; }
+}
+
+.motion-paused .m03-upgrade,
+.motion-paused .m03-upgrade *,
+.motion-paused .m03-upgrade *::before,
+.motion-paused .m03-upgrade *::after,
+.motion-paused .m03-shortcuts,
+.motion-paused .m03-shortcuts *,
+.motion-paused .m03-shortcuts *::before,
+.motion-paused .m03-shortcuts *::after,
+.motion-paused .m03-accounts,
+.motion-paused .m03-accounts *,
+.motion-paused .m03-accounts *::before,
+.motion-paused .m03-accounts *::after {
+  animation-play-state: paused !important;
+}
+
+@keyframes m03-atmosphere {
+  0% { background-position: 100% 0%, 0% 48%, 0 0; }
+  100% { background-position: 78% 8%, 18% 42%, 0 0; }
+}
+
+@keyframes m03-chapter-scan {
+  0%, 12% { transform: translateX(0) skewX(-18deg); opacity: 0; }
+  28% { opacity: 1; }
+  58%, 100% { transform: translateX(1200%) skewX(-18deg); opacity: 0; }
+}
+
+@keyframes m03-meta-enter {
+  from { opacity: 0; transform: translateY(-14px); letter-spacing: .22em; }
+  to { opacity: 1; transform: none; letter-spacing: .14em; }
+}
+
+@keyframes m03-kicker-enter {
+  from { opacity: 0; transform: translateX(-22px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes m03-title-reveal {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(24px); }
+  to { clip-path: inset(0 0 0 0); transform: none; }
+}
+
+@keyframes m03-copy-enter {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes m03-rule-sweep {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes m03-acid-breathe {
+  0%, 100% { text-shadow: 0 0 0 rgba(223,255,88,0); }
+  50% { text-shadow: 0 0 28px rgba(223,255,88,.17); }
+}
+
+@keyframes m03-desk-enter {
+  from { opacity: 0; transform: translateY(32px) scale(.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes m03-desk-glow {
+  0%, 100% { box-shadow: 0 38px 110px rgba(0,0,0,.34), inset 0 1px rgba(255,255,255,.07); }
+  50% { box-shadow: 0 42px 125px rgba(0,0,0,.36), 0 0 50px rgba(117,213,255,.055), inset 0 1px rgba(255,255,255,.09); }
+}
+
+@keyframes m03-work-label {
+  0%, 100% { opacity: .48; letter-spacing: .16em; }
+  50% { opacity: .85; letter-spacing: .21em; }
+}
+
+@keyframes m03-desk-line {
+  from { background-position: 170% 0; }
+  to { background-position: -70% 0; }
+}
+
+@keyframes m03-folder-float {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-10px) rotate(-3.8deg); }
+}
+
+@keyframes m03-file-a-float {
+  0%, 100% { transform: translateY(0) rotate(5deg); }
+  50% { transform: translateY(-13px) rotate(3.5deg); }
+}
+
+@keyframes m03-file-b-float {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(11px) rotate(-5.5deg); }
+}
+
+@keyframes m03-gpt-breathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 18px rgba(213,255,95,.06), 0 28px 70px rgba(0,0,0,.28); }
+  50% { transform: scale(1.035); box-shadow: 0 0 0 25px rgba(213,255,95,.035), 0 30px 82px rgba(0,0,0,.31); }
+}
+
+@keyframes m03-gpt-ring {
+  0% { transform: scale(.9); opacity: .55; }
+  75%, 100% { transform: scale(1.22); opacity: 0; }
+}
+
+@keyframes m03-view-rise {
+  from { translate: 0 42px; filter: saturate(.75) brightness(.84); }
+  to { translate: 0 0; filter: none; }
+}
+
+@keyframes m03-card-enter {
+  from { translate: 0 34px; clip-path: inset(0 0 14% 0 round 28px); }
+  to { translate: 0 0; clip-path: inset(0 0 0 0 round 28px); }
+}
+
+@keyframes m03-bridge-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 10px rgba(213,255,95,.035), 0 18px 45px rgba(0,0,0,.28); }
+  50% { transform: scale(1.06); box-shadow: 0 0 0 17px rgba(213,255,95,.025), 0 18px 50px rgba(0,0,0,.3); }
+}
+
+@keyframes m03-bridge-flow {
+  from { background-position: 165% 0; }
+  to { background-position: -65% 0; }
+}
+
+@keyframes m03-local-icon {
+  0%, 100% { transform: translateX(0); filter: drop-shadow(0 0 0 rgba(90,205,255,0)); }
+  50% { transform: translateX(5px); filter: drop-shadow(0 0 10px rgba(90,205,255,.18)); }
+}
+
+@keyframes m03-cloud-icon {
+  0%, 100% { transform: translateX(0); filter: drop-shadow(0 0 0 rgba(177,151,255,0)); }
+  50% { transform: translateX(-5px); filter: drop-shadow(0 0 10px rgba(177,151,255,.18)); }
+}
+
+@keyframes m03-app-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -5px; }
+}
+
+@keyframes m03-down-arrow {
+  0%, 100% { transform: translateY(-3px); opacity: .55; }
+  50% { transform: translateY(5px); opacity: 1; }
+}
+
+@keyframes m03-os-breathe {
+  0%, 100% { box-shadow: inset 0 0 0 rgba(159,220,255,0); }
+  50% { box-shadow: inset 0 0 32px rgba(159,220,255,.035); }
+}
+
+@keyframes m03-arrow-flow {
+  from { background-position: 180% 0; }
+  to { background-position: -80% 0; }
+}
+
+@keyframes m03-upload-nudge {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 7px 0; }
+}
+
+@keyframes m03-download-nudge {
+  0%, 100% { translate: 0 0; }
+  50% { translate: -7px 0; }
+}
+
+@keyframes m03-transfer-icon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes m03-note-pulse {
+  0%, 100% { border-color: rgba(213,255,95,.15); box-shadow: 0 0 0 rgba(213,255,95,0); }
+  50% { border-color: rgba(213,255,95,.28); box-shadow: 0 0 28px rgba(213,255,95,.045); }
+}
+
+@keyframes m03-hardware-icon {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-5px) rotate(1.5deg); }
+}
+
+@keyframes m03-memory-pulse {
+  0%, 100% { opacity: .65; filter: drop-shadow(0 0 0 rgba(223,255,88,0)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 8px rgba(223,255,88,.32)); }
+}
+
+@keyframes m03-sync-arrow {
+  0%, 100% { transform: translateX(-4px); opacity: .55; }
+  50% { transform: translateX(4px); opacity: 1; }
+}
+
+@keyframes m03-sync-cloud {
+  0%, 100% { box-shadow: 0 0 0 rgba(213,255,95,0); }
+  50% { box-shadow: 0 0 38px rgba(213,255,95,.055); }
+}
+
+@keyframes m03-account-avatar {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.045); }
+}
+
+@media (max-width: 980px) {
+  .transfer-arrow.upload,
+  .transfer-arrow.download { animation: m03-vertical-nudge 2.6s ease-in-out infinite; }
+
+  .transfer-arrow.download { animation-delay: -1.3s; }
+
+  @keyframes m03-vertical-nudge {
+    0%, 100% { translate: 0 -3px; }
+    50% { translate: 0 5px; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m03-upgrade,
+  .m03-upgrade *,
+  .m03-upgrade *::before,
+  .m03-upgrade *::after,
+  .m03-shortcuts,
+  .m03-shortcuts *,
+  .m03-shortcuts *::before,
+  .m03-shortcuts *::after,
+  .m03-accounts,
+  .m03-accounts *,
+  .m03-accounts *::before,
+  .m03-accounts *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .m03u-hero h2 { clip-path: none !important; }
+  .m03u-section-title,
+  .m03u-basic-group,
+  .m03u-transfer,
+  .hw-card,
+  .m03u-memory-rule,
+  .m03u-sync-section { translate: none !important; filter: none !important; clip-path: none !important; }
+}
