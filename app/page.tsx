@@ -210,7 +210,6 @@ export default function Home() {
             {m(2).points.map((point, index) => <li key={point} data-reveal><b>0{index + 1}</b><span>{point}</span><small>{index === 0 ? "START" : index === 3 ? "FIELD" : "NEXT"}</small></li>)}
           </ol>
           <div className="m02-caption glass" data-reveal><strong>{m(2).future}</strong><p>{m(2).explain}</p></div>
-          <Check mission={m(2)} />
         </div>
       </section>
 
