@@ -1,3 +1,4 @@
+@import "./comparison-motion.css";
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono&family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap");
 .marquee {
   overflow: hidden;

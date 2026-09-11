@@ -1,0 +1,92 @@
+/* Mission 01 comparison: reveal the contrast progressively as it enters view. */
+.value-difference {
+  position: relative;
+  overflow: hidden;
+  animation: comparison-panel-in 0.8s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation-timeline: view();
+  animation-range: entry 5% cover 22%;
+}
+
+.value-difference::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -12%;
+  width: 260px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 143, 200, 0.2), transparent 68%);
+  animation: comparison-orbit 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.value-kicker,
+.value-difference h3,
+.value-intro,
+.comparison-head {
+  animation: comparison-copy-in 0.7s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation-timeline: view();
+  animation-range: entry 8% cover 24%;
+}
+
+.comparison-row {
+  animation: comparison-row-in 0.65s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation-timeline: view();
+  animation-range: entry 4% cover 18%;
+}
+
+.comparison-row p:last-child {
+  position: relative;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.comparison-row:hover p:last-child {
+  transform: translateX(8px) rotate(-0.4deg);
+  box-shadow: 7px 8px 0 rgba(210, 70, 141, 0.12);
+}
+
+@keyframes comparison-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(54px) scale(0.975);
+    box-shadow: 0 0 0 rgba(32, 33, 61, 0);
+  }
+}
+
+@keyframes comparison-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes comparison-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(-34px);
+  }
+}
+
+@keyframes comparison-orbit {
+  50% {
+    transform: translate(-28px, 34px) scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .value-difference,
+  .value-difference::before,
+  .value-kicker,
+  .value-difference h3,
+  .value-intro,
+  .comparison-head,
+  .comparison-row {
+    animation: none !important;
+  }
+
+  .comparison-row:hover p:last-child {
+    transform: none;
+  }
+}
