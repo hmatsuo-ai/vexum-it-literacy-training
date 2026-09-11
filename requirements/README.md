@@ -6,6 +6,14 @@
 
 - [`vexum-seminar-material-requirements.md`](./vexum-seminar-material-requirements.md) — VEXUMセミナー資料の全体方針・カリキュラム・全テーマ要件
 
+## 補助リファレンス
+
+- [`design-references-100.md`](./design-references-100.md) — デザイン調査対象100サイトのリファレンス。
+- [`design-ui-ideas/`](./design-ui-ideas/) — 100サイトから抽出・抽象化した1,000件の具体的UIアイデア。
+- [`design-inspiration/`](./design-inspiration/) — アニメーション・レイアウト・配色を**各1,000件（計3,000件）**定義した汎用デザイン辞書。`generate.py` でCSVへ展開可能。
+
+上記はすべて**補助リファレンス**であり、要件定義の正本ではない。
+
 ## 管理方針
 
 - テーマごとに別のMarkdownファイルを作成しない。
