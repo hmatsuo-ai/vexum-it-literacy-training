@@ -1,0 +1,50 @@
+/* Mission 02: improve legibility over bright photography without covering the image. */
+.m02-photo::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg,
+      rgba(4, 9, 17, .64) 0%,
+      rgba(4, 9, 17, .48) 24%,
+      rgba(4, 9, 17, .22) 54%,
+      rgba(4, 9, 17, .04) 78%,
+      transparent 100%),
+    linear-gradient(180deg,
+      rgba(4, 9, 17, .20) 0%,
+      transparent 42%);
+}
+
+.m02-station-label {
+  z-index: 4;
+  text-shadow:
+    0 2px 3px rgba(0, 0, 0, .72),
+    0 8px 28px rgba(0, 0, 0, .58);
+}
+
+.m02-station-label span,
+.m02-station-label small {
+  color: #fff;
+  font-weight: 700;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, .88),
+    0 8px 24px rgba(0, 0, 0, .72);
+}
+
+.m02-station-label b {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, .92);
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, .42),
+    0 10px 35px rgba(0, 0, 0, .38);
+}
+
+@media (max-width: 700px) {
+  .m02-photo::before {
+    background: linear-gradient(90deg,
+      rgba(4, 9, 17, .70) 0%,
+      rgba(4, 9, 17, .42) 50%,
+      rgba(4, 9, 17, .10) 100%);
+  }
+}
