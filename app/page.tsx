@@ -391,14 +391,14 @@ export default function Home() {
       </div>
       <section className="intro">
         <p>THE JOURNEY</p>
-        <h2>
-          今日知る。
-          <br />
-          今日使う。
-          <br />
-          AIを、
-          <br />
-          <em>自分のものにする。</em>
+        <h2 className="journey-title">
+          <span>今日知る。</span>
+          <span>今日使う。</span>
+          <span>AIを、</span>
+          <em>
+            <span>自分のものに</span>
+            <span className="title-tail">する。</span>
+          </em>
         </h2>
         <div className="journey-copy">
           <p>
