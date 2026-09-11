@@ -25,7 +25,12 @@ body::before {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  transform: translateZ(0);
+  image-rendering: auto;
+  /* Do not force this fixed SVG onto a GPU-composited bitmap layer.
+     Safari/WebKit can rasterize the layer early and make the vector backdrop
+     look soft or jagged on Retina/high-DPI displays. */
+  transform: none;
+  will-change: auto;
 }
 
 body::after {
