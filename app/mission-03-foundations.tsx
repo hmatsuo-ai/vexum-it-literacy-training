@@ -100,23 +100,38 @@ export default function Mission03Foundations() {
             </div>
           </section>
 
-          <section className="m03u-basic-group">
+          <section className="m03u-basic-group m03u-software-group">
             <div className="m03u-basic-group-head">
               <small>01-C / SOFTWARE</small>
-              <h4>OSとアプリケーション</h4>
-              <p>OSはPC全体を動かす土台、アプリはその上で目的ごとの作業をする道具です。不具合が起きたときも、この2つを分けて考えると原因を切り分けやすくなります。</p>
+              <h4>PCの中で、アプリが動く仕組み</h4>
+              <p>普段使うChromeやExcelなどのアプリは、WindowsやmacOSという土台の上で動いています。</p>
             </div>
-            <div className="m03u-basic-cards m03u-basic-cards--pair">
-              <article>
-                <div className="m03u-icon local"><TechIcon name="cpu"/></div>
-                <small>OS</small><h4>PC全体を動かす基本ソフト</h4>
-                <p>WindowsやmacOSなど。画面・キーボード・ファイル・メモリなどを管理し、アプリが動くための共通の環境を用意します。</p>
-              </article>
-              <article>
-                <div className="m03u-icon file"><TechIcon name="file"/></div>
-                <small>APPLICATION</small><h4>目的ごとの作業をするソフト</h4>
-                <p>文書作成、表計算、Web閲覧などを担当します。Word / Googleドキュメント、Excel / Googleスプレッドシート、Chrome / Edge / Safariなどが代表例です。</p>
-              </article>
+
+            <div className="m03u-software-visual">
+              <div className="software-screen">
+                <div className="software-screen-head">
+                  <span><i/><i/><i/></span>
+                  <small>APPLICATIONS / 普段使うもの</small>
+                </div>
+
+                <div className="software-app-grid">
+                  <div className="software-app app-web"><b>C</b><span><strong>Chrome / Safari</strong><small>Webを見る</small></span></div>
+                  <div className="software-app app-doc"><b>W</b><span><strong>Word / Docs</strong><small>文書を作る</small></span></div>
+                  <div className="software-app app-sheet"><b>X</b><span><strong>Excel / Sheets</strong><small>表計算をする</small></span></div>
+                  <div className="software-app app-chat"><b>S</b><span><strong>Slack / Teams</strong><small>連絡する</small></span></div>
+                </div>
+
+                <div className="software-layer-arrow"><span>この上でアプリが動く</span><i>↓</i></div>
+
+                <div className="software-os-layer">
+                  <div className="software-os-icon"><TechIcon name="cpu"/></div>
+                  <div>
+                    <small>OS / PCを動かす土台</small>
+                    <strong>Windows <i>/</i> macOS</strong>
+                    <p>画面・キーボード・ファイルなど、PC全体をまとめて管理します。</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </div>
