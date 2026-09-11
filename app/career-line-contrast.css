@@ -1,9 +1,9 @@
-/* Mission 02: improve chapter hierarchy, readability, and career-flow scanning. */
+/* Mission 02: compact the chapter into a clear two-column story and make the career flow scan at a glance. */
 
 .m02 {
-  grid-template-columns: minmax(340px, 36vw) minmax(0, 1fr);
-  min-height: 145vh;
-  background: #f1f2ee;
+  grid-template-columns: clamp(300px, 30vw, 440px) minmax(0, 1fr);
+  min-height: 100svh;
+  background: #f3f4f0;
 }
 
 .m02-photo {
@@ -18,21 +18,20 @@
   pointer-events: none;
   background:
     linear-gradient(90deg,
-      rgba(4, 9, 17, .68) 0%,
-      rgba(4, 9, 17, .50) 24%,
-      rgba(4, 9, 17, .24) 56%,
-      rgba(4, 9, 17, .05) 82%,
-      transparent 100%),
+      rgba(4, 9, 17, .78) 0%,
+      rgba(4, 9, 17, .56) 38%,
+      rgba(4, 9, 17, .18) 76%,
+      rgba(4, 9, 17, .04) 100%),
     linear-gradient(180deg,
-      rgba(4, 9, 17, .22) 0%,
-      transparent 44%,
-      rgba(4, 9, 17, .18) 100%);
+      rgba(4, 9, 17, .24) 0%,
+      transparent 42%,
+      rgba(4, 9, 17, .34) 100%);
 }
 
 .m02-station-label {
   z-index: 4;
-  left: clamp(28px, 3vw, 54px);
-  top: clamp(54px, 8vh, 88px);
+  left: clamp(28px, 3vw, 48px);
+  top: clamp(72px, 10vh, 104px);
   text-shadow:
     0 2px 3px rgba(0, 0, 0, .72),
     0 8px 28px rgba(0, 0, 0, .58);
@@ -49,9 +48,9 @@
 
 .m02-station-label b {
   margin: 12px 0 8px;
-  font-size: clamp(6rem, 10.5vw, 10.5rem);
-  line-height: .78;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, .92);
+  font-size: clamp(6.2rem, 9vw, 9.4rem);
+  line-height: .8;
+  -webkit-text-stroke: 1.4px rgba(255, 255, 255, .92);
   text-shadow:
     0 2px 5px rgba(0, 0, 0, .42),
     0 10px 35px rgba(0, 0, 0, .38);
@@ -60,46 +59,59 @@
 .m02-panel {
   position: relative;
   width: 100%;
-  max-width: 1120px;
-  padding: clamp(88px, 11vh, 126px) clamp(44px, 5.2vw, 88px) clamp(96px, 12vh, 150px);
+  max-width: 1380px;
+  padding: clamp(68px, 8vh, 92px) clamp(42px, 4.5vw, 78px) clamp(76px, 9vh, 108px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.16fr) minmax(280px, .84fr);
+  column-gap: clamp(36px, 4vw, 68px);
+  row-gap: 0;
+  align-content: start;
 }
 
 .m02-panel::before {
   content: "";
   position: absolute;
   left: 0;
-  top: clamp(88px, 11vh, 126px);
+  top: clamp(68px, 8vh, 92px);
   width: 3px;
-  height: 72px;
+  height: 58px;
   border-radius: 99px;
   background: linear-gradient(var(--pink), var(--blue));
 }
 
 .m02-panel > .mission-meta {
-  margin-bottom: clamp(46px, 6vh, 72px);
+  grid-column: 1 / -1;
+  margin-bottom: clamp(32px, 4vh, 46px);
 }
 
 .m02-panel > h2 {
-  max-width: 12ch;
-  margin: 0 0 clamp(24px, 3.5vh, 38px);
-  font: 900 clamp(3rem, 4.45vw, 5.7rem) / 1.06 Montserrat, "Noto Sans JP", sans-serif;
+  grid-column: 1;
+  align-self: end;
+  max-width: 10.5ch;
+  margin: 0;
+  font: 900 clamp(3rem, 3.95vw, 4.7rem) / 1.04 Montserrat, "Noto Sans JP", sans-serif;
   letter-spacing: -.055em;
   text-wrap: balance;
 }
 
 .m02-panel > .lead {
-  max-width: 46ch;
-  margin: 0;
-  color: #374151;
-  font-size: clamp(1rem, 1.12vw, 1.2rem);
-  line-height: 1.95;
+  grid-column: 2;
+  align-self: end;
+  max-width: 32ch;
+  margin: 0 0 4px;
+  padding-left: clamp(20px, 2vw, 30px);
+  border-left: 1px solid rgba(17, 24, 39, .18);
+  color: #3f4856;
+  font-size: clamp(.95rem, 1.02vw, 1.08rem);
+  line-height: 1.9;
 }
 
 .career-line {
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(10px, 1vw, 18px);
-  margin: clamp(54px, 7vh, 82px) 0;
+  gap: clamp(10px, 1vw, 16px);
+  margin: clamp(42px, 5vh, 58px) 0 clamp(24px, 3vh, 34px);
   padding: 0;
 }
 
@@ -109,21 +121,21 @@
 
 .career-line li {
   position: relative;
-  min-height: 190px;
-  padding: 26px 22px 24px;
+  min-height: 158px;
+  padding: 20px 18px 20px;
   border: 1px solid rgba(17, 24, 39, .10);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, .66);
-  box-shadow: 0 12px 34px rgba(17, 24, 39, .055);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .76);
+  box-shadow: 0 12px 30px rgba(17, 24, 39, .045);
 }
 
 .career-line li::after {
   content: "→";
   position: absolute;
-  right: 18px;
-  top: 18px;
-  color: rgba(17, 24, 39, .26);
-  font: 700 18px "DM Mono", monospace;
+  right: 16px;
+  top: 16px;
+  color: rgba(17, 24, 39, .25);
+  font: 700 17px "DM Mono", monospace;
 }
 
 .career-line li:last-child::after {
@@ -135,18 +147,18 @@
   position: static;
   display: grid;
   place-items: center;
-  width: 50px;
-  height: 50px;
-  margin-bottom: 28px;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 22px;
   border-radius: 50%;
   background: #111827;
   color: #fff;
-  font: 700 10px "DM Mono", monospace;
+  font: 700 9px "DM Mono", monospace;
 }
 
 .career-line li span {
   display: block;
-  font-size: clamp(1.35rem, 1.8vw, 2.15rem);
+  font-size: clamp(1.22rem, 1.5vw, 1.72rem);
   font-weight: 900;
   line-height: 1.18;
   letter-spacing: -.04em;
@@ -154,40 +166,86 @@
 
 .career-line li small {
   display: block;
-  margin-top: 12px;
+  margin-top: 9px;
   color: #737b88;
-  font-size: 9px;
+  font-size: 8px;
   letter-spacing: .14em;
 }
 
 .m02-caption {
-  padding: clamp(28px, 3vw, 40px);
-  border-radius: 26px;
+  grid-column: 1;
+  margin-top: 0;
+  padding: clamp(24px, 2.4vw, 32px);
+  border-radius: 22px;
   border-color: rgba(17, 24, 39, .08);
-  background: rgba(255, 255, 255, .72);
-  box-shadow: 0 18px 50px rgba(17, 24, 39, .05);
+  background: rgba(255, 255, 255, .78);
+  box-shadow: 0 14px 38px rgba(17, 24, 39, .045);
 }
 
 .m02-caption strong {
-  max-width: 18ch;
-  font-size: clamp(1.6rem, 2.45vw, 2.65rem);
+  display: block;
+  max-width: 20ch;
+  font-size: clamp(1.45rem, 2vw, 2.1rem);
   line-height: 1.35;
   letter-spacing: -.035em;
 }
 
 .m02-caption p {
-  max-width: 52ch;
-  margin-bottom: 0;
-  line-height: 1.9;
+  max-width: 54ch;
+  margin: 14px 0 0;
+  color: #4b5563;
+  font-size: .96rem;
+  line-height: 1.85;
 }
 
 .m02 .check-block {
-  margin-top: clamp(52px, 7vh, 84px);
+  grid-column: 2;
+  align-self: stretch;
+  margin: 0;
+  padding: clamp(24px, 2.4vw, 32px);
+  border: 0;
+  border-radius: 22px;
+  background: #111827;
+  color: #fff;
 }
 
-@media (max-width: 1180px) {
+.m02 .check-block small {
+  margin-bottom: 14px;
+  color: var(--pink);
+  opacity: 1;
+}
+
+.m02 .check-block strong {
+  max-width: 26ch;
+  font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+  line-height: 1.7;
+}
+
+@media (max-width: 1260px) {
   .m02 {
-    grid-template-columns: minmax(300px, 34vw) minmax(0, 1fr);
+    grid-template-columns: minmax(290px, 32vw) minmax(0, 1fr);
+  }
+
+  .m02-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .m02-panel > h2,
+  .m02-panel > .lead,
+  .m02-caption,
+  .m02 .check-block {
+    grid-column: 1;
+  }
+
+  .m02-panel > h2 {
+    max-width: 12ch;
+    margin-bottom: 24px;
+  }
+
+  .m02-panel > .lead {
+    max-width: 48ch;
+    padding-left: 0;
+    border-left: 0;
   }
 
   .career-line {
@@ -195,7 +253,11 @@
   }
 
   .career-line li {
-    min-height: 160px;
+    min-height: 142px;
+  }
+
+  .m02 .check-block {
+    margin-top: 14px;
   }
 }
 
@@ -208,50 +270,59 @@
   .m02-photo {
     position: relative;
     top: auto;
-    height: 52svh;
-    min-height: 390px;
+    height: 40svh;
+    min-height: 310px;
     background-position: center 45%;
   }
 
   .m02-station-label {
     position: absolute;
     left: 24px;
-    top: 44px;
+    top: 42px;
   }
 
   .m02-station-label b {
-    font-size: clamp(6rem, 24vw, 9rem);
+    font-size: clamp(5.6rem, 22vw, 8.5rem);
   }
 
   .m02-panel {
     max-width: none;
-    padding: 72px 6vw 96px;
+    padding: 58px 6vw 78px;
   }
 
   .m02-panel::before {
-    top: 72px;
+    top: 58px;
   }
 
   .m02-panel > .mission-meta {
-    margin-bottom: 42px;
+    margin-bottom: 34px;
   }
 
   .m02-panel > h2 {
     max-width: 13ch;
-    font-size: clamp(2.7rem, 9vw, 4.8rem);
+    font-size: clamp(2.55rem, 8.5vw, 4.4rem);
+  }
+
+  .career-line {
+    margin-top: 40px;
   }
 }
 
 @media (max-width: 560px) {
+  .m02-photo {
+    height: 34svh;
+    min-height: 260px;
+  }
+
   .m02-photo::before {
     background: linear-gradient(90deg,
-      rgba(4, 9, 17, .72) 0%,
-      rgba(4, 9, 17, .46) 52%,
+      rgba(4, 9, 17, .76) 0%,
+      rgba(4, 9, 17, .48) 52%,
       rgba(4, 9, 17, .12) 100%);
   }
 
   .m02-panel {
-    padding: 64px 22px 82px;
+    padding: 52px 22px 68px;
   }
 
   .m02-panel::before {
@@ -260,31 +331,31 @@
 
   .m02-panel > h2 {
     max-width: none;
-    font-size: clamp(2.35rem, 12.5vw, 3.6rem);
+    font-size: clamp(2.25rem, 11.5vw, 3.35rem);
     line-height: 1.08;
   }
 
   .career-line {
     grid-template-columns: 1fr;
-    gap: 12px;
-    margin: 46px 0 54px;
+    gap: 10px;
+    margin: 36px 0 42px;
   }
 
   .career-line li {
     min-height: 0;
-    padding: 22px 22px 24px 88px;
+    padding: 20px 20px 20px 82px;
   }
 
   .career-line li b {
     position: absolute;
-    left: 22px;
-    top: 22px;
-    width: 46px;
-    height: 46px;
+    left: 20px;
+    top: 20px;
+    width: 44px;
+    height: 44px;
     margin: 0;
   }
 
   .career-line li span {
-    font-size: 1.55rem;
+    font-size: 1.45rem;
   }
 }
