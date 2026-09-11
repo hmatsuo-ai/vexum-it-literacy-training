@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Mission03Foundations from "./mission-03-foundations";
+import Mission03Shortcuts from "./mission-03-shortcuts";
 import "./experience.css";
 import "./remove-floating-nav.css";
 import "./mission-01-fixed-background.css";
@@ -12,6 +13,7 @@ import "./mission-03-foundations.css";
 import "./mission-03-data-basics.css";
 import "./user-photo-sources.css";
 import "./mission-03-spacing-fix.css";
+import "./mission-03-shortcuts.css";
 
 export const metadata: Metadata = {
   title: "VEXUM ACADEMY｜IT・AI SEMINAR",
@@ -24,6 +26,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {children}
         <Mission03Foundations />
+        <Mission03Shortcuts />
       </body>
     </html>
   );
