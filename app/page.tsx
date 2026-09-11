@@ -170,7 +170,7 @@ export default function Home() {
           <h2>今日知る。<br/>今日使う。<br/><em>自分のものにする。</em></h2>
         </div>
         <div className="manifesto-note glass" data-reveal>
-          <p>AIへの解像度を高める一番の近道は、自分の手で使うことです。仕事の整理、調べもの、旅行の計画、文章づくり。触るほど、AIにできることと、人が判断すべきことが見えてきます。</p>
+          <p>AIへの解像度を高める一番の近道は、自分の手で使うことです。セミナーで学んだことをきっかけに、AIに触れば触るほど、理解は深まります。AIの進化は日進月歩。今日学んだことが、すべてではありません。</p>
           <strong>LEARN → USE → QUESTION → BUILD</strong>
         </div>
       </section>
