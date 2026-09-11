@@ -126,26 +126,6 @@ export default function Mission03Foundations() {
         </div>
       </section>
 
-      <section className="m03u-flow">
-        <div className="m03u-section-title">
-          <small>03 / REAL SCENE</small>
-          <h3>「GPTにファイルを渡す」を分解すると。</h3>
-          <p>AIを使うときも、実際には「ローカルかクラウドか」「どのフォルダにあるか」「どのファイルを渡すか」を判断しています。</p>
-        </div>
-        <div className="m03u-flow-line">
-          <div className="flow-node"><div className="m03u-icon"><TechIcon name="folder"/></div><small>STEP 1</small><b>保存場所を探す</b><span>Downloads / Drive など</span></div>
-          <i>→</i>
-          <div className="flow-node"><div className="m03u-icon"><TechIcon name="file"/></div><small>STEP 2</small><b>ファイルを選ぶ</b><span>内容・拡張子を確認</span></div>
-          <i>→</i>
-          <div className="flow-node gpt"><div className="m03u-icon"><TechIcon name="gpt"/></div><small>STEP 3</small><b>GPTへ添付</b><span>渡してよい情報か確認</span></div>
-        </div>
-        <div className="m03u-checks">
-          <span>✓ ローカル？クラウド？</span>
-          <span>✓ どのフォルダ・どのアカウント？</span>
-          <span>✓ 個人情報・機密情報は含まれない？</span>
-        </div>
-      </section>
-
       <aside className="m03u-final-check">
         <small>CAN YOU EXPLAIN IT?</small>
         <strong>「ファイルとフォルダ」「ローカルとクラウド」「メモリとストレージ」の違いを、自分の言葉で説明できる。</strong>
