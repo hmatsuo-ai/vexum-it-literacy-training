@@ -20,6 +20,7 @@ import "./mission-03-accounts.css";
 import "./mission-03-transfer.css";
 import "./mission-03-sync.css";
 import "./mission-03-location-visual.css";
+import "./mission-03-motion.css";
 import "./mission-04-probability.css";
 
 export const metadata: Metadata = {
