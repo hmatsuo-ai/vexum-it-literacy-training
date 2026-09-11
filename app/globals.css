@@ -1,7 +1,386 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono&family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap');
-.teaching{margin-top:38px;border-top:2px solid #15204b}.teaching p{margin:0;padding:19px 0;border-bottom:1px solid var(--line);line-height:1.8}.teaching b{display:block;margin-bottom:8px;color:#172d78;font:700 12px "Noto Sans JP",sans-serif;letter-spacing:.04em}.teaching b:before{content:"●";color:#5370d6;margin-right:8px}
-.mission-band{color:#fff}.mission-band h1{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.25)}.mission-band h2{color:#f4f7ff;text-shadow:0 1px 10px rgba(0,0,0,.35)}.mission-band strong{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.35)}
-.intro{position:relative}.intro:after{content:"UMEDA, OSAKA — YOUR NEXT WORKPLACE";grid-column:1/-1;height:min(38vw,520px);display:flex;align-items:end;padding:28px;background:linear-gradient(0deg,rgba(8,13,26,.55),transparent 55%),url('/images/umeda-career-view.png') center/cover;color:#fff;font:11px "DM Mono",monospace;letter-spacing:.12em}@media(max-width:700px){.intro:after{height:58vw;min-height:260px;margin-top:45px;padding:18px;font-size:9px}}
-.path a{column-gap:20px}.path a span{display:flex;flex-direction:column;gap:10px;min-width:0}.path a small{display:block;font-size:15px;line-height:1.45;letter-spacing:0;font-family:"Noto Sans JP",sans-serif;font-weight:700}.path a i{justify-self:end}@media(max-width:700px){.path a{column-gap:10px}.path a span{gap:7px}.path a small{font-size:13px}}
-.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7vw;align-items:center}.case-photo{height:min(64vw,700px);min-height:460px;overflow:hidden}.case-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.05)}.case-copy{position:relative;z-index:1}@media(max-width:700px){.case{display:block}.case-photo{height:52vw;min-height:250px;margin:-14vh -7vw 8vh}.case-copy{padding-top:0}}
-:root{--ink:#080d1a;--paper:#f7f7f2;--acid:#d8ff48;--line:#cfd4c9}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ink);font:16px/1.85 "Noto Sans JP",sans-serif}a{color:inherit;text-decoration:none}.gate{color:#fff;overflow:hidden}.gate>header{height:78px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;position:absolute;z-index:2;width:100%}.logo{font:800 18px Montserrat,sans-serif;letter-spacing:.1em}.logo i{display:inline-grid;place-items:center;width:25px;height:25px;margin-right:7px;border-radius:50%;background:var(--acid);color:var(--ink);font-style:normal}.logo small{font:500 9px "DM Mono";letter-spacing:.15em}.start{border:1px solid #ffffff88;padding:8px 12px;font:11px "DM Mono"}.hero{height:100vh;min-height:650px;display:flex;align-items:flex-end;position:relative;padding:0 7vw 9vh;isolation:isolate;background:radial-gradient(circle at 70% 40%,#762672,transparent 27%),radial-gradient(circle at 57% 48%,#223d9f,transparent 30%),var(--ink)}.hero:before{content:"";position:absolute;inset:0;opacity:.17;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:9vw 9vw}.orb,.planet{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 22%,#d6ffff,transparent 5%),radial-gradient(circle at 49% 39%,#9a8aff,transparent 18%),radial-gradient(circle at 53% 56%,#4c37ba,transparent 60%);filter:drop-shadow(0 0 70px #5b36ce)}.orb{z-index:-1;width:min(63vw,850px);aspect-ratio:1;right:5vw;top:11%;animation:float 10s ease-in-out infinite}.hero-copy{width:min(100%,1080px)}.hero-copy>p,.intro>p,.path>p,.case>p{font:11px "DM Mono";letter-spacing:.15em;color:var(--acid)}h1,h2{font-family:Montserrat,"Noto Sans JP",sans-serif}.hero h1{font-size:clamp(3.7rem,8vw,8.3rem);line-height:.93;letter-spacing:-.1em;margin:12px 0 35px}.hero h1 em,.intro h2 em,.case h2 em{font-style:normal;color:var(--acid);font-family:"Noto Sans JP"}.hero-copy>div{display:flex;align-items:center;gap:28px;font:12px/1.5 "DM Mono";letter-spacing:.1em}.hero-copy>div a{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:white;color:var(--ink);font:10px "DM Mono"}.intro{padding:18vh 12vw;background:var(--paper);color:var(--ink);display:grid;grid-template-columns:1.15fr .85fr;gap:10vw}.intro>p{grid-column:1/-1;color:#587054}.intro h2,.case h2{margin:0;font-size:clamp(3rem,6vw,7rem);line-height:.98;letter-spacing:-.09em}.intro h2 em{color:#334fad}.intro>div{align-self:end;font-size:18px}.path{padding:13vh 12vw;background:var(--acid);color:var(--ink)}.path>p{color:#3c5213}.path a{display:grid;grid-template-columns:70px 1fr 30px;width:100%;padding:20px 0;border-bottom:1px solid #18221077;align-items:center}.path b{font:11px "DM Mono"}.path span{font:800 clamp(1.8rem,4.3vw,4.8rem)/1 Montserrat;letter-spacing:-.08em}.path small{font:400 13px "Noto Sans JP"}.path i{font-size:24px;font-style:normal}.case{min-height:90vh;padding:18vh 12vw;background:linear-gradient(135deg,#111a41,#0b1025 55%,#214d7b)}.case>div{max-width:520px;font-size:18px;margin:45px 0}.case>a{display:inline-block;background:#fff;color:var(--ink);padding:15px 21px}.missions{background:var(--paper);color:#10152b}.mission-section{scroll-margin-top:0}.mission-band{min-height:47vh;position:relative;overflow:hidden;padding:11vh 12vw 7vh;background:radial-gradient(circle at 78% 26%,#6664ce,transparent 23%),linear-gradient(125deg,#111a41,#0b1025)}.mission-section:nth-child(even) .mission-band{background:radial-gradient(circle at 77% 25%,#3e7787,transparent 23%),linear-gradient(125deg,#092a34,#0c1421)}.final-mission .mission-band{background:radial-gradient(circle at 78% 24%,#a7537d,transparent 20%),linear-gradient(125deg,#28123c,#0b1025)}.planet{width:min(47vw,650px);aspect-ratio:1;right:-7vw;top:-25%}.mission-band p,.future{font:11px "DM Mono";letter-spacing:.14em;color:#b4f26a;position:relative}.mission-band h1{position:relative;margin:8px 0;font-size:clamp(3.2rem,7vw,7rem);line-height:.95;letter-spacing:-.1em}.mission-band h2{position:relative;max-width:520px;margin:20px 0;font-size:18px;font-weight:500}.mission-band strong{position:absolute;right:8vw;bottom:6vh;font:700 40px Montserrat}.mission-band strong i{font-size:13px;font-style:normal;color:#a1aabd}.mission-section article{max-width:820px;margin:auto;padding:10vh 6vw 13vh}.future{color:#587054;border-bottom:1px solid var(--line);padding-bottom:23px;margin-bottom:42px}.future b{color:#172d78;margin-left:10px}.copy{font-size:17px}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);margin:28px 0}.cards div{min-height:125px;padding:20px;background:var(--paper);display:flex;flex-direction:column;justify-content:space-between}.cards b{font:11px "DM Mono";color:#3452a9}.cards span{font-weight:700}.cards.final{background:#142053}.cards.final div{background:#142053;color:#fff}.cards.final b{color:var(--acid)}aside{margin-top:34px;padding:22px;background:var(--acid)}aside b{font:11px "DM Mono";letter-spacing:.12em}.continue{margin-top:55px;padding-top:22px;border-top:1px solid var(--line)}.continue a{font:11px "DM Mono";letter-spacing:.1em;color:#172d78}.continue b{color:#496ad0;font-size:17px}.end{padding:25px 5vw;background:#10152b;color:#fff;font:10px "DM Mono";letter-spacing:.1em}@keyframes float{50%{transform:translate(-3%,4%) scale(1.05)}}@media(max-width:700px){.hero{min-height:700px}.orb{width:98vw;right:-30vw;top:16%}.intro{display:block;padding:14vh 7vw}.intro h2{margin:30px 0 45px}.path,.case{padding:14vh 7vw}.path a{grid-template-columns:42px 1fr 20px}.mission-band{padding:11vh 7vw 8vh;min-height:450px}.planet{width:92vw;right:-46vw;top:2%}.mission-band strong{right:7vw}.mission-band h2{font-size:16px}.mission-section article{padding:8vh 7vw 12vh}.cards{grid-template-columns:1fr}}
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono&family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap");
+:root {
+  --ink: #20213d;
+  --cream: #fffdf8;
+  --pink: #ff8fc8;
+  --yellow: #ffe55b;
+  --blue: #86c9ff;
+  --mint: #bdf3c8;
+  --line: #d9d8e5;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font:
+    16px/1.85 "Noto Sans JP",
+    sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.gate > header {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  padding: 0 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font: 800 18px Montserrat;
+  letter-spacing: 0.08em;
+}
+.logo i {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--pink);
+  font-style: normal;
+}
+.logo small {
+  font: 10px "DM Mono";
+}
+.start {
+  padding: 9px 13px;
+  border: 2px solid var(--ink);
+  border-radius: 99px;
+  font: 11px "DM Mono";
+}
+.hero {
+  min-height: 100vh;
+  padding: 20vh 8vw 10vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff 0%, #f7f0ff 50%, #ecf9ff);
+}
+.hero:before,
+.hero:after,
+.orb {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(1px);
+}
+.hero:before {
+  width: 45vw;
+  height: 45vw;
+  right: -6vw;
+  top: 10vh;
+  background: var(--yellow);
+  opacity: 0.7;
+  animation: float 8s ease-in-out infinite;
+}
+.hero:after {
+  width: 25vw;
+  height: 25vw;
+  left: 35vw;
+  bottom: -7vw;
+  background: var(--pink);
+  opacity: 0.5;
+  animation: float 11s ease-in-out infinite reverse;
+}
+.orb {
+  width: 18vw;
+  height: 18vw;
+  right: 20vw;
+  bottom: 7vh;
+  background: var(--blue);
+  opacity: 0.7;
+}
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+.hero-copy > p,
+.intro > p,
+.path > p,
+.case p,
+.mission-band p {
+  font: 11px "DM Mono";
+  letter-spacing: 0.15em;
+}
+.hero h1,
+.intro h2,
+.case h2,
+.mission-band h1 {
+  font:
+    800 clamp(3.4rem, 8vw, 8rem) / 0.96 Montserrat,
+    "Noto Sans JP";
+  letter-spacing: -0.09em;
+  margin: 18px 0;
+}
+.hero h1 em,
+.intro h2 em,
+.case h2 em {
+  font-style: normal;
+  color: #ec4fa0;
+}
+.hero-copy > div {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font: 12px "DM Mono";
+}
+.hero-copy > div a {
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  animation: bob 2.5s ease-in-out infinite;
+}
+.intro {
+  padding: 16vh 12vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8vw;
+  background: #fff;
+}
+.intro > p {
+  grid-column: 1/-1;
+  color: #df4593;
+}
+.intro > div {
+  font-size: 18px;
+}
+.path {
+  padding: 13vh 12vw;
+  background: var(--mint);
+}
+.path a {
+  display: grid;
+  grid-template-columns: 70px 1fr 30px;
+  gap: 18px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px dashed #67877a;
+}
+.path b {
+  font: 11px "DM Mono";
+}
+.path span {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font: 800 clamp(1.7rem, 4vw, 4.8rem) / 1 Montserrat;
+}
+.path small {
+  font: 700 14px "Noto Sans JP";
+}
+.path i {
+  font-size: 22px;
+  font-style: normal;
+}
+.case {
+  padding: 12vh 8vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7vw;
+  align-items: center;
+  background: #fff5b8;
+}
+.case-photo {
+  height: min(52vw, 620px);
+  overflow: hidden;
+  border-radius: 50% 50% 12px 12px;
+  transform: rotate(-2deg);
+  box-shadow: 18px 18px 0 var(--pink);
+}
+.case-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.case h2 {
+  font-size: clamp(2.6rem, 5vw, 6rem);
+}
+.case > a {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 13px 19px;
+  border-radius: 99px;
+  background: var(--ink);
+  color: #fff;
+  font: 11px "DM Mono";
+}
+.missions {
+  background: #fff;
+}
+.mission-band {
+  min-height: 46vh;
+  position: relative;
+  overflow: hidden;
+  padding: 10vh 12vw 7vh;
+  background: linear-gradient(125deg, #dff4ff, #f2e8ff);
+}
+.mission-section:nth-child(even) .mission-band {
+  background: linear-gradient(125deg, #fff0f7, #fff7cb);
+}
+.final-mission .mission-band {
+  background: linear-gradient(125deg, #ffd5ec, #cceeff);
+}
+.planet {
+  position: absolute;
+  right: -5vw;
+  top: -25%;
+  width: 45vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--yellow);
+  opacity: 0.65;
+  animation: float 9s ease-in-out infinite;
+}
+.mission-band h2 {
+  position: relative;
+  max-width: 550px;
+  font-size: 18px;
+}
+.mission-band strong {
+  position: absolute;
+  right: 9vw;
+  bottom: 6vh;
+  font: 800 42px Montserrat;
+}
+.mission-band strong i {
+  font-size: 13px;
+  font-style: normal;
+}
+.mission-section article {
+  max-width: 860px;
+  margin: auto;
+  padding: 9vh 6vw;
+}
+.future {
+  font: 11px "DM Mono";
+  color: #d2468d;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 20px;
+}
+.copy {
+  font-size: 17px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 30px 0;
+}
+.cards div {
+  min-height: 120px;
+  padding: 20px;
+  border-radius: 18px;
+  background: #eef8ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cards div:nth-child(2n) {
+  background: #fff1f8;
+}
+.cards b,
+.teaching b {
+  font: 11px "DM Mono";
+  color: #d2468d;
+}
+.cards.final div {
+  background: #282a58;
+  color: white;
+}
+.teaching {
+  margin-top: 35px;
+}
+.teaching p {
+  padding: 18px 20px;
+  border-left: 4px solid var(--pink);
+  background: #fff9ee;
+  margin: 10px 0;
+}
+.teaching b {
+  display: block;
+  margin-bottom: 6px;
+}
+.continue {
+  margin-top: 50px;
+  text-align: right;
+}
+.continue a {
+  font: 11px "DM Mono";
+  color: #d2468d;
+}
+.end {
+  padding: 30px 5vw;
+  background: var(--ink);
+  color: #fff;
+  font: 10px "DM Mono";
+}
+@keyframes float {
+  50% {
+    transform: translate(-4%, 5%) scale(1.06);
+  }
+}
+@keyframes bob {
+  50% {
+    transform: translateY(10px);
+  }
+}
+@media (max-width: 700px) {
+  .hero {
+    padding: 19vh 7vw 8vh;
+  }
+  .hero h1 {
+    font-size: clamp(3.4rem, 16vw, 5.3rem);
+  }
+  .intro,
+  .case {
+    display: block;
+    padding: 13vh 7vw;
+  }
+  .intro h2 {
+    margin: 28px 0;
+  }
+  .case-photo {
+    height: 70vw;
+    margin-bottom: 50px;
+  }
+  .path {
+    padding: 12vh 7vw;
+  }
+  .path a {
+    grid-template-columns: 40px 1fr 20px;
+    gap: 10px;
+  }
+  .mission-band {
+    padding: 10vh 7vw;
+    min-height: 430px;
+  }
+  .mission-band strong {
+    right: 7vw;
+  }
+  .planet {
+    width: 90vw;
+    right: -40vw;
+  }
+  .mission-section article {
+    padding: 8vh 7vw;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
