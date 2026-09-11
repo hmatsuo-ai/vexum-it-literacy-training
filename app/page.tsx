@@ -266,10 +266,10 @@ export default function Home() {
       </nav>
       <section className="case">
         <div className="case-photo">
-          <img
-            src="/images/vexum-team-workshop.png"
-            alt="仕事の改善について話し合うチーム"
-          />
+            <img
+              src="/images/umeda-panorama.jpg"
+              alt="梅田の都心を見渡す景観"
+            />
         </div>
         <div className="case-copy">
           <p>A CASE STORY</p>
