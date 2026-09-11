@@ -1,4 +1,5 @@
-/* Chapter-end comprehension / confirmation blocks are intentionally removed site-wide. */
+/* Chapter-end comprehension / confirmation blocks are removed site-wide. */
+/* This rule is intentionally global so future mission Check components do not render either. */
 .check-block,
 .m03u-final-check {
   display: none !important;
