@@ -9,6 +9,7 @@ import "./fixed-site-background.css";
 import "./check-copy-wrap.css";
 import "./block-structure.css";
 import "./mission-03-foundations.css";
+import "./user-photo-sources.css";
 
 export const metadata: Metadata = {
   title: "VEXUM ACADEMY｜IT・AI SEMINAR",
