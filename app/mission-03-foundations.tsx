@@ -120,6 +120,36 @@ export default function Mission03Foundations() {
             </div>
           </section>
         </div>
+
+        <section className="m03u-transfer">
+          <div className="m03u-transfer-head">
+            <small>01-D / TRANSFER</small>
+            <span>クラウド</span>
+            <h4>アップロードとダウンロードの違い</h4>
+            <p>ファイルが「どちら向きに移動するか」で覚えると迷いません。</p>
+          </div>
+
+          <div className="m03u-transfer-diagram">
+            <article className="transfer-place transfer-device">
+              <small>LOCAL / YOUR DEVICE</small>
+              <h5>自分の端末</h5>
+              <div><TechIcon name="file"/><b>ファイル</b></div>
+            </article>
+
+            <div className="transfer-arrows" aria-label="アップロードとダウンロードの方向">
+              <div className="transfer-arrow upload"><span>アップロード</span><b>端末 → クラウド</b></div>
+              <div className="transfer-arrow download"><span>ダウンロード</span><b>クラウド → 端末</b></div>
+            </div>
+
+            <article className="transfer-place transfer-cloud">
+              <small>CLOUD / ONLINE</small>
+              <h5>クラウド</h5>
+              <div><TechIcon name="cloud"/><b>共有の保管場所</b></div>
+            </article>
+          </div>
+
+          <p className="m03u-transfer-note">操作後は、ファイルの保存先を確認してください。</p>
+        </section>
       </section>
 
       <section className="m03u-hardware">
