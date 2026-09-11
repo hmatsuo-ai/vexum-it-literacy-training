@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./experience.css";
 import "./remove-floating-nav.css";
 import "./mission-01-fixed-background.css";
+import "./journey-background.css";
 
 export const metadata: Metadata = {
   title: "VEXUM ACADEMY｜IT・AI SEMINAR",
