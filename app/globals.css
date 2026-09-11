@@ -148,6 +148,109 @@
 .case-copy {
   max-width: 850px;
 }
+
+/* Each mission has its own visual climate while sharing one learning rhythm. */
+.mission-section {
+  --chapter-accent: #d13f89;
+  --chapter-band-a: #ffd7e9;
+  --chapter-band-b: #d9f0ff;
+  --chapter-page: #fff8fc;
+  --chapter-card-a: #fff0f6;
+  --chapter-card-b: #eaf7ff;
+  background: linear-gradient(180deg, var(--chapter-page), #fff 72%);
+}
+.mission-section:nth-child(2) {
+  --chapter-accent: #405ed6;
+  --chapter-band-a: #dce7ff;
+  --chapter-band-b: #efe3ff;
+  --chapter-page: #f8faff;
+  --chapter-card-a: #edf2ff;
+  --chapter-card-b: #f5edff;
+}
+.mission-section:nth-child(3) {
+  --chapter-accent: #187c5f;
+  --chapter-band-a: #d4f3df;
+  --chapter-band-b: #fff1a8;
+  --chapter-page: #f7fff9;
+  --chapter-card-a: #e5f8ec;
+  --chapter-card-b: #fff7cf;
+}
+.mission-section:nth-child(4) {
+  --chapter-accent: #7251c7;
+  --chapter-band-a: #ebe0ff;
+  --chapter-band-b: #d9f7ff;
+  --chapter-page: #fcf9ff;
+  --chapter-card-a: #f1eaff;
+  --chapter-card-b: #e7faff;
+}
+.mission-section:nth-child(5) {
+  --chapter-accent: #147aa3;
+  --chapter-band-a: #d7f2ff;
+  --chapter-band-b: #dff8ec;
+  --chapter-page: #f6fcff;
+  --chapter-card-a: #e5f7ff;
+  --chapter-card-b: #e9faef;
+}
+.mission-section:nth-child(6) {
+  --chapter-accent: #c55a2e;
+  --chapter-band-a: #ffe0d2;
+  --chapter-band-b: #fff0a8;
+  --chapter-page: #fffaf5;
+  --chapter-card-a: #ffede4;
+  --chapter-card-b: #fff6ce;
+}
+.mission-section:nth-child(7) {
+  --chapter-accent: #4459bd;
+  --chapter-band-a: #dfe5ff;
+  --chapter-band-b: #dff7a8;
+  --chapter-page: #f8f9ff;
+  --chapter-card-a: #e9edff;
+  --chapter-card-b: #effbd2;
+}
+.mission-section:nth-child(8) {
+  --chapter-accent: #bd3f50;
+  --chapter-band-a: #ffe1df;
+  --chapter-band-b: #fff0c9;
+  --chapter-page: #fff8f7;
+  --chapter-card-a: #ffebea;
+  --chapter-card-b: #fff5da;
+}
+.mission-section .mission-band,
+.mission-section:nth-child(even) .mission-band,
+.mission-section.final-mission .mission-band {
+  background: linear-gradient(
+    125deg,
+    var(--chapter-band-a),
+    var(--chapter-band-b)
+  );
+}
+.mission-section .planet {
+  background: var(--chapter-accent);
+  opacity: 0.13;
+}
+.mission-section .mission-stamp {
+  border-color: var(--chapter-accent);
+  color: var(--chapter-accent);
+}
+.mission-section .future,
+.mission-section .continue a,
+.mission-section .cards b,
+.mission-section .teaching b {
+  color: var(--chapter-accent);
+}
+.mission-section .cards div,
+.mission-section .cards div:nth-child(2n),
+.mission-section .cards.final div {
+  background: var(--chapter-card-a);
+  color: var(--ink);
+}
+.mission-section .cards div:nth-child(2n) {
+  background: var(--chapter-card-b);
+}
+.mission-section .teaching p {
+  border-left-color: var(--chapter-accent);
+  background: color-mix(in srgb, var(--chapter-card-a) 70%, #fff);
+}
 .intro::before {
   content: "";
   position: absolute;
