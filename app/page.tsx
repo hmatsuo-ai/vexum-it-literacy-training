@@ -478,25 +478,6 @@ export default function Home() {
           </a>
         ))}
       </nav>
-      <section className="case">
-        <div className="case-photo">
-          <img src="/images/umeda-panorama.jpg" alt="梅田の都心を見渡す景観" />
-        </div>
-        <div className="case-copy">
-          <p>A CASE STORY</p>
-          <h2>
-            毎月80時間かかる
-            <br />
-            仕事を、あなたなら
-            <br />
-            <em>どう変える？</em>
-          </h2>
-          <div>
-            ITの基礎を知り、AIを理解し、要件を言葉にして、小さくつくる。8つのミッションは、ひとつの現場課題を解決するための道筋です。
-          </div>
-          <a href="#mission-06">CASEを進める →</a>
-        </div>
-      </section>
       <section className="missions">
         {missions.map((m, index) => (
           <section
