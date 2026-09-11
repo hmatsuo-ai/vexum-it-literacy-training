@@ -446,11 +446,10 @@ export default function Home() {
         <h2 className="journey-title">
           <span>今日知る。</span>
           <span>今日使う。</span>
-          <span>AIを、</span>
-          <em>
-            <span>自分のものに</span>
-            <span className="title-tail">する。</span>
-          </em>
+          <span>
+            AIを、<em>自分の</em>
+          </span>
+          <em>ものにする。</em>
         </h2>
         <div className="journey-copy">
           <p>
