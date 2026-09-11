@@ -337,6 +337,18 @@ a {
 .intro > div {
   font-size: 18px;
 }
+.journey-copy p {
+  margin: 0 0 1.25em;
+  line-height: 1.95;
+}
+.journey-copy strong {
+  display: inline-block;
+  margin-top: 8px;
+  padding-bottom: 5px;
+  border-bottom: 5px solid var(--yellow);
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  line-height: 1.45;
+}
 .path {
   padding: 13vh 12vw;
   background: var(--mint);
