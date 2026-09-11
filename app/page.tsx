@@ -206,6 +206,73 @@ const depth = [
     miss: "AIが表示した指示やWeb上の命令には従うべきという考え。元の目的と人からの指示を優先します。",
   },
 ];
+
+const teachingLabels = [
+  {
+    why: "現場から始める理由",
+    explain: "VEXUMが大切にすること",
+    example: "ある現場で",
+    work: "あなたならどうする？",
+    miss: "ここに注意",
+    check: "自分の言葉で",
+  },
+  {
+    why: "成長の見通し",
+    explain: "一歩ずつ進む",
+    example: "キャリアの場面",
+    work: "あなたの現在地",
+    miss: "覚えておきたいこと",
+    check: "次の一歩を描く",
+  },
+  {
+    why: "仕事を支える土台",
+    explain: "データの居場所",
+    example: "ファイルを扱う場面",
+    work: "どこにある？",
+    miss: "思い込みに注意",
+    check: "判断してみよう",
+  },
+  {
+    why: "AIと付き合う前提",
+    explain: "LLMの得意と限界",
+    example: "回答を受け取ったら",
+    work: "確かめてみよう",
+    miss: "流暢さに注意",
+    check: "説明してみよう",
+  },
+  {
+    why: "使い分ける理由",
+    explain: "目的から選ぶ",
+    example: "仕事での選び方",
+    work: "どの機能を使う？",
+    miss: "自動検索とは限らない",
+    check: "選んだ理由を話す",
+  },
+  {
+    why: "言葉にする価値",
+    explain: "要件に必要なこと",
+    example: "家計簿アプリなら",
+    work: "条件を決めよう",
+    miss: "長さより具体性",
+    check: "完成を定義する",
+  },
+  {
+    why: "人が担う判断",
+    explain: "作って終わらせない",
+    example: "実際に触ったら",
+    work: "改善を伝えよう",
+    miss: "動くだけでは未完成",
+    check: "完成を見極める",
+  },
+  {
+    why: "安全に使うために",
+    explain: "入力・回答・操作",
+    example: "怪しい指示を見つけたら",
+    work: "分類してみよう",
+    miss: "立ち止まるサイン",
+    check: "安全な流れを話す",
+  },
+];
 export default function Home() {
   return (
     <main className="gate">
@@ -238,6 +305,14 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="marquee" aria-hidden="true">
+        <div>
+          DISCOVER VEXUM ✦ UNDERSTAND IT ✦ UNDERSTAND AI ✦ THINK &amp; DEFINE ✦
+          BUILD WITH AI ✦ CHANGE THE REAL WORLD ✦ DISCOVER VEXUM ✦ UNDERSTAND IT
+          ✦ UNDERSTAND AI ✦ THINK &amp; DEFINE ✦ BUILD WITH AI ✦ CHANGE THE REAL
+          WORLD ✦
+        </div>
+      </div>
       <section className="intro">
         <p>THE JOURNEY</p>
         <h2>
@@ -266,10 +341,7 @@ export default function Home() {
       </nav>
       <section className="case">
         <div className="case-photo">
-            <img
-              src="/images/umeda-panorama.jpg"
-              alt="梅田の都心を見渡す景観"
-            />
+          <img src="/images/umeda-panorama.jpg" alt="梅田の都心を見渡す景観" />
         </div>
         <div className="case-copy">
           <p>A CASE STORY</p>
@@ -297,6 +369,7 @@ export default function Home() {
           >
             <div className="mission-band">
               <div className="planet" />
+              <span className="mission-stamp">YOUR NEXT EDGE</span>
               <p>
                 {m.n === "07"
                   ? "FINAL MISSION · BUILD"
@@ -311,7 +384,7 @@ export default function Home() {
             </div>
             <article>
               <p className="future">
-                THIS LEADS TO <b>{m.future}</b>
+                身につく力 <b>{m.future}</b>
               </p>
               <div className="copy">
                 <p>{m.copy}</p>
@@ -325,27 +398,27 @@ export default function Home() {
                 </div>
                 <section className="teaching">
                   <p>
-                    <b>なぜこの章が必要か</b>
+                    <b>{teachingLabels[index].why}</b>
                     {depth[index].why}
                   </p>
                   <p>
-                    <b>講師が必ず伝えること</b>
+                    <b>{teachingLabels[index].explain}</b>
                     {m.explain}
                   </p>
                   <p>
-                    <b>具体例</b>
+                    <b>{teachingLabels[index].example}</b>
                     {m.example}
                   </p>
                   <p>
-                    <b>受講者ワーク</b>
+                    <b>{teachingLabels[index].work}</b>
                     {depth[index].work}
                   </p>
                   <p>
-                    <b>よくある誤解</b>
+                    <b>{teachingLabels[index].miss}</b>
                     {depth[index].miss}
                   </p>
                   <p>
-                    <b>理解確認</b>
+                    <b>{teachingLabels[index].check}</b>
                     {m.check}
                   </p>
                 </section>
