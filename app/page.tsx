@@ -349,6 +349,58 @@ const vexumFlow = [
       "使って初めて分かった不便を拾い、設定・仕組み・運用を直します。この循環を一度で終わらせません。",
   },
 ];
+
+const chapterVisuals = [
+  {
+    n: "02",
+    label: "CAREER PATH",
+    title: "学びは、実務へつながっていく。",
+    note: "一段ずつ経験を重ね、相談とフィードバックを受けながら、顧客へ届けられる価値を増やします。",
+    items: ["セミナー", "技術研修", "NEXUS", "常駐開始"],
+  },
+  {
+    n: "03",
+    label: "DATA JOURNEY",
+    title: "データの居場所と動きを追う。",
+    note: "見えている画面だけで判断せず、保存場所、共有範囲、AIへ渡してよい情報かを順に確認します。",
+    items: ["PC", "FILE", "CLOUD", "AI", "人が確認"],
+  },
+  {
+    n: "04",
+    label: "NEXT TOKEN",
+    title: "AIは、次の言葉を予測している。",
+    note: "文章を理解して正解を取り出すのではなく、文脈に続きそうな言葉を一つずつ選び、回答を組み立てます。",
+    items: ["AI", "は", "次の", "言葉を", "予測する"],
+  },
+  {
+    n: "05",
+    label: "CHOOSE A MODE",
+    title: "目的が変われば、使い方も変わる。",
+    note: "製品名から選ぶのではなく、何をしたいか、どの情報が必要か、結果をどう確かめるかから考えます。",
+    items: ["対話", "深く考える", "Web検索", "ファイル利用"],
+  },
+  {
+    n: "06",
+    label: "DEFINE THE WORK",
+    title: "曖昧なイメージを、作れる条件へ。",
+    note: "目的から完成条件までを積み上げると、相手とAIが同じゴールを見ながら仕事を進められます。",
+    items: ["目的", "利用者", "利用場面", "必要な機能", "完成条件"],
+  },
+  {
+    n: "07",
+    label: "FINAL MISSION",
+    title: "つくる。触る。伝える。直す。",
+    note: "AIが出した最初の答えを完成にせず、利用者の視点で試し、改善の言葉を返します。",
+    items: ["DEFINE", "BUILD", "TRY", "IMPROVE"],
+  },
+  {
+    n: "08",
+    label: "THREE CHECKS",
+    title: "渡す前、信じる前、動かす前。",
+    note: "AIを安全に使う判断は、入力・回答・操作の三つの場面で立ち止まることから始まります。",
+    items: ["INPUT", "OUTPUT", "ACTION"],
+  },
+];
 export default function Home() {
   return (
     <main className="gate">
@@ -483,6 +535,28 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
+                {index > 0 && (
+                  <section
+                    className={`chapter-visual visual-${m.n}`}
+                    aria-label={`${m.title}の図解`}
+                  >
+                    <div className="visual-copy">
+                      <p>{chapterVisuals[index - 1].label}</p>
+                      <h3>{chapterVisuals[index - 1].title}</h3>
+                      <div>{chapterVisuals[index - 1].note}</div>
+                    </div>
+                    <ol>
+                      {chapterVisuals[index - 1].items.map(
+                        (item, itemIndex) => (
+                          <li key={item}>
+                            <b>{String(itemIndex + 1).padStart(2, "0")}</b>
+                            <span>{item}</span>
+                          </li>
+                        ),
+                      )}
+                    </ol>
+                  </section>
+                )}
                 {index === 0 && (
                   <section className="value-difference">
                     <p className="value-kicker">PROJECT-BASED / FIELD-LED</p>

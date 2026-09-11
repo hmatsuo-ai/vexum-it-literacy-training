@@ -270,6 +270,306 @@
     white-space: nowrap;
   }
 }
+
+.chapter-visual {
+  position: relative;
+  overflow: hidden;
+  margin: 52px 0;
+  padding: clamp(28px, 5vw, 48px);
+  border: 1px solid color-mix(in srgb, var(--chapter-accent) 24%, #fff);
+  border-radius: 28px;
+  background: color-mix(in srgb, var(--chapter-card-a) 64%, #fff);
+}
+.visual-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+}
+.visual-copy > p {
+  margin: 0 0 12px;
+  color: var(--chapter-accent);
+  font: 700 12px "DM Mono";
+  letter-spacing: 0.1em;
+}
+.visual-copy h3 {
+  margin: 0 0 16px;
+  font:
+    800 clamp(1.9rem, 4vw, 3rem) / 1.2 Montserrat,
+    "Noto Sans JP";
+  letter-spacing: -0.05em;
+}
+.visual-copy div {
+  line-height: 1.85;
+}
+.chapter-visual ol {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 12px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.chapter-visual li {
+  position: relative;
+  padding: 18px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(32, 33, 61, 0.08);
+}
+.chapter-visual li b {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--chapter-accent);
+  font: 700 11px "DM Mono";
+}
+.chapter-visual li span {
+  font-weight: 800;
+}
+.visual-02 ol {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: end;
+}
+.visual-02 li {
+  min-height: calc(100px + var(--step, 0px));
+  animation: career-step 3.6s ease-in-out infinite alternate;
+}
+.visual-02 li:nth-child(2) {
+  --step: 24px;
+  animation-delay: 0.18s;
+}
+.visual-02 li:nth-child(3) {
+  --step: 48px;
+  animation-delay: 0.36s;
+}
+.visual-02 li:nth-child(4) {
+  --step: 72px;
+  animation-delay: 0.54s;
+}
+.visual-03 ol {
+  grid-template-columns: repeat(5, 1fr);
+}
+.visual-03 ol::before {
+  content: "";
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 50%;
+  height: 3px;
+  background: var(--chapter-accent);
+}
+.visual-03 ol::after {
+  content: "";
+  position: absolute;
+  left: 6%;
+  top: calc(50% - 6px);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--yellow);
+  box-shadow: 0 0 0 6px rgba(255, 229, 91, 0.28);
+  animation: data-travel 4s ease-in-out infinite;
+}
+.visual-03 li {
+  min-height: 112px;
+  border: 2px solid var(--chapter-accent);
+}
+.visual-04 ol {
+  display: flex;
+  flex-wrap: wrap;
+}
+.visual-04 li {
+  flex: 1 1 110px;
+  border-radius: 999px;
+  text-align: center;
+  animation: token-pulse 3s ease-in-out infinite;
+}
+.visual-04 li b {
+  margin-bottom: 7px;
+}
+.visual-04 li:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.visual-04 li:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.visual-04 li:nth-child(4) {
+  animation-delay: 0.9s;
+}
+.visual-04 li:nth-child(5) {
+  animation-delay: 1.2s;
+}
+.visual-05 ol {
+  grid-template-columns: repeat(2, 1fr);
+}
+.visual-05 li {
+  min-height: 120px;
+  border: 2px solid transparent;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+.visual-05 li:hover {
+  transform: rotate(-2deg) scale(1.025);
+  border-color: var(--chapter-accent);
+}
+.visual-05 li:nth-child(2n):hover {
+  transform: rotate(2deg) scale(1.025);
+}
+.visual-06 ol {
+  display: block;
+  padding: 18px 0 6px;
+}
+.visual-06 li {
+  width: calc(100% - var(--inset, 0px));
+  margin: -7px auto 0;
+  transform: translateX(var(--shift, 0px));
+  border: 1px solid color-mix(in srgb, var(--chapter-accent) 35%, #fff);
+  animation: prompt-stack 4s ease-in-out infinite alternate;
+}
+.visual-06 li:nth-child(2) {
+  --inset: 5%;
+  --shift: 8px;
+}
+.visual-06 li:nth-child(3) {
+  --inset: 10%;
+  --shift: -6px;
+}
+.visual-06 li:nth-child(4) {
+  --inset: 15%;
+  --shift: 10px;
+}
+.visual-06 li:nth-child(5) {
+  --inset: 20%;
+  --shift: -5px;
+}
+.visual-07 {
+  background: var(--ink);
+  color: #fff;
+}
+.visual-07 .visual-copy div {
+  color: rgba(255, 255, 255, 0.78);
+}
+.visual-07 ol {
+  grid-template-columns: repeat(4, 1fr);
+}
+.visual-07 ol::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -9px;
+  width: 34%;
+  height: 5px;
+  border-radius: 99px;
+  background: var(--chapter-band-b);
+  animation: build-progress 4s ease-in-out infinite;
+}
+.visual-07 li {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+.visual-07 li span {
+  color: #fff;
+  font-family: "DM Mono";
+}
+.visual-08 {
+  background: linear-gradient(145deg, var(--chapter-card-a), #fff);
+}
+.visual-08 ol {
+  grid-template-columns: repeat(3, 1fr);
+}
+.visual-08 li {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 3px solid var(--chapter-accent);
+  border-radius: 50%;
+  text-align: center;
+  animation: safety-ring 3.2s ease-in-out infinite;
+}
+.visual-08 li b {
+  position: absolute;
+  top: 22%;
+}
+.visual-08 li:nth-child(2) {
+  animation-delay: 0.35s;
+}
+.visual-08 li:nth-child(3) {
+  animation-delay: 0.7s;
+}
+@keyframes career-step {
+  to {
+    transform: translateY(-9px);
+  }
+}
+@keyframes data-travel {
+  50%,
+  100% {
+    left: 92%;
+  }
+}
+@keyframes token-pulse {
+  40% {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 0 color-mix(in srgb, var(--chapter-accent) 22%, #fff);
+  }
+}
+@keyframes prompt-stack {
+  to {
+    transform: translateX(var(--shift, 0px)) translateY(-5px);
+  }
+}
+@keyframes build-progress {
+  50%,
+  100% {
+    width: 100%;
+  }
+}
+@keyframes safety-ring {
+  50% {
+    transform: scale(1.035);
+    box-shadow: 0 0 0 10px
+      color-mix(in srgb, var(--chapter-accent) 12%, transparent);
+  }
+}
+
+@media (max-width: 700px) {
+  .chapter-visual {
+    margin-inline: -2vw;
+    padding: 30px 20px;
+  }
+  .visual-02 ol,
+  .visual-03 ol,
+  .visual-05 ol,
+  .visual-07 ol,
+  .visual-08 ol {
+    grid-template-columns: 1fr;
+  }
+  .visual-02 li {
+    min-height: 0;
+  }
+  .visual-03 ol::before,
+  .visual-03 ol::after {
+    display: none;
+  }
+  .visual-08 li {
+    width: min(250px, 82vw);
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee div,
+  .mission-stamp,
+  .mission-section article,
+  .chapter-visual *,
+  .hero-copy > div a,
+  .orb,
+  .blob {
+    animation: none !important;
+    transform: none !important;
+  }
+}
 .intro::before {
   content: "";
   position: absolute;
