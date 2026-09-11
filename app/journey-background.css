@@ -1,0 +1,22 @@
+/* Journey section: keep the city image fixed while the copy scrolls over it. */
+.manifesto {
+  background-color: #070b12;
+  background-image: url('/images/umeda-career-view.png');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* The old low-resolution panorama layer is no longer used. */
+.manifesto-photo {
+  display: none;
+  background: none;
+  transform: none;
+}
+
+/* Let the heading move with normal page scrolling instead of sticking. */
+.manifesto-copy {
+  position: relative;
+  top: auto;
+}
