@@ -196,7 +196,6 @@ export default function Home() {
             {m(1).points.map((point, index) => <div key={point} className={`orbit-node n${index + 1}`}><b>0{index + 1}</b><span>{point}</span></div>)}
           </div>
           <div className="m01-detail" data-reveal><p>{m(1).explain}</p><blockquote>{m(1).example}</blockquote></div>
-          <Check mission={m(1)} />
         </div>
       </section>
 
