@@ -300,14 +300,54 @@ const vexumComparison = [
 ];
 
 const vexumFlow = [
-  "聞く",
-  "観察する",
-  "課題を整理する",
-  "手段を選ぶ",
-  "導入・開発する",
-  "使い方を伝える",
-  "結果を見る",
-  "改善する",
+  {
+    phase: "UNDERSTAND",
+    title: "聞く",
+    detail:
+      "依頼された内容だけでなく、誰が困っているか、何を良くしたいか、変えられない条件まで聞きます。",
+  },
+  {
+    phase: "UNDERSTAND",
+    title: "観察する",
+    detail:
+      "実際の操作や情報の受け渡しを見て、本人も当たり前だと思っている手間や重複を見つけます。",
+  },
+  {
+    phase: "DEFINE",
+    title: "課題を整理する",
+    detail:
+      "起きている現象と原因を分け、時間・品質・コストへの影響から、先に変える場所を決めます。",
+  },
+  {
+    phase: "CHOOSE",
+    title: "手段を選ぶ",
+    detail:
+      "業務手順の変更、既存ツール、自動化、独自開発を比べ、必要以上に大きくしない方法を選びます。",
+  },
+  {
+    phase: "BUILD",
+    title: "導入・開発する",
+    detail:
+      "小さく試せる範囲から設定や開発を行い、現場で確かめられる状態へ早く持っていきます。",
+  },
+  {
+    phase: "ADOPT",
+    title: "使い方を伝える",
+    detail:
+      "操作方法だけでなく、いつ使うか、困ったときはどうするかまで伝え、使い始める不安を減らします。",
+  },
+  {
+    phase: "MEASURE",
+    title: "結果を見る",
+    detail:
+      "導入前後の時間やミス、利用者の声を確かめ、本当に仕事が良くなったかを判断します。",
+  },
+  {
+    phase: "IMPROVE",
+    title: "改善する",
+    detail:
+      "使って初めて分かった不便を拾い、設定・仕組み・運用を直します。この循環を一度で終わらせません。",
+  },
 ];
 export default function Home() {
   return (
@@ -480,14 +520,33 @@ export default function Home() {
                         入力方法が人によって違うなら、まずルールをそろえる。既存の表計算やフォームで解決できるなら、それを設定する。足りない処理だけを自動化し、使う人へ説明する。運用後に時間が減ったかを確かめ、残った負担をまた改善する。VEXUMの価値は、技術そのものではなく、この変化を最後までつなぐことにあります。
                       </div>
                     </div>
+                  </section>
+                )}
+                {index === 0 && (
+                  <section className="field-cycle">
+                    <div className="cycle-intro">
+                      <p>FROM OBSERVATION TO ADOPTION</p>
+                      <h3>現場の変化が、定着するまで。</h3>
+                      <div>
+                        VEXUMの仕事は、課題を見つけて何かを導入した時点では終わりません。使う人が理解し、仕事の流れが変わり、その効果を確かめるところまで、8つの動きをつなぎます。
+                      </div>
+                    </div>
                     <ol className="value-flow" aria-label="VEXUMの改善の流れ">
                       {vexumFlow.map((step, stepIndex) => (
-                        <li key={step}>
+                        <li key={step.title}>
                           <b>{String(stepIndex + 1).padStart(2, "0")}</b>
-                          <span>{step}</span>
+                          <small>{step.phase}</small>
+                          <h4>{step.title}</h4>
+                          <p>{step.detail}</p>
                         </li>
                       ))}
                     </ol>
+                    <div className="cycle-conclusion">
+                      <b>導入は、ゴールではなく途中。</b>
+                      <p>
+                        現場で使われ、成果が生まれ、次の改善へつながって初めて、技術は顧客の価値になります。
+                      </p>
+                    </div>
                   </section>
                 )}
                 <section className="teaching">
