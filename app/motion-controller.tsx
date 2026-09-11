@@ -13,7 +13,7 @@ function BlockStructure() {
       <div className="block-structure__head">
         <div>
           <p className="block-structure__eyebrow">VEXUM BLOCK SYSTEM</p>
-          <h3 id="block-structure-title">3つの役割で、<br />1つのチーム。</h3>
+          <h3 id="block-structure-title">3つの役割で、<br />1つのブロック。</h3>
         </div>
         <p className="block-structure__intro">
           <strong>VEXUMのメンバーは全員大学生。</strong><br />
