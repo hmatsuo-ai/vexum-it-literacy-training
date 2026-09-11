@@ -14,6 +14,7 @@ import "./mission-03-data-basics.css";
 import "./user-photo-sources.css";
 import "./mission-03-spacing-fix.css";
 import "./mission-03-shortcuts.css";
+import "./mission-03-transfer.css";
 
 export const metadata: Metadata = {
   title: "VEXUM ACADEMY｜IT・AI SEMINAR",
