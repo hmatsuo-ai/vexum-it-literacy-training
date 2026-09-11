@@ -1,0 +1,309 @@
+.block-structure{
+  position:relative;
+  margin:12vh auto 2vh;
+  padding:clamp(30px,5vw,70px);
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:38px;
+  background:linear-gradient(145deg,rgba(8,14,25,.78),rgba(15,22,36,.54));
+  backdrop-filter:blur(24px) saturate(1.18);
+  -webkit-backdrop-filter:blur(24px) saturate(1.18);
+  box-shadow:0 34px 100px rgba(0,0,0,.28);
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.block-structure::before{
+  content:"";
+  position:absolute;
+  inset:-35%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 22% 30%,rgba(255,79,154,.22),transparent 25%),
+    radial-gradient(circle at 78% 65%,rgba(159,220,255,.18),transparent 28%),
+    radial-gradient(circle at 52% 8%,rgba(223,255,88,.12),transparent 24%);
+  animation:block-glow 9s ease-in-out infinite alternate;
+}
+
+.block-structure__head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(240px,.55fr);
+  gap:clamp(24px,5vw,70px);
+  align-items:end;
+  margin-bottom:clamp(34px,5vw,64px);
+}
+
+.block-structure__eyebrow{
+  margin:0 0 10px;
+  color:var(--acid);
+  font:600 10px "DM Mono",monospace;
+  letter-spacing:.16em;
+}
+
+.block-structure__head h3{
+  margin:0;
+  font:900 clamp(2.3rem,5vw,5.6rem)/.96 Montserrat,"Noto Sans JP",sans-serif;
+  letter-spacing:-.055em;
+}
+
+.block-structure__intro{
+  margin:0;
+  color:rgba(255,255,255,.72);
+  font-size:clamp(14px,1.18vw,18px);
+  line-height:1.9;
+}
+
+.block-structure__intro strong{
+  color:#fff;
+  font-weight:800;
+}
+
+.block-structure__body{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(320px,1.1fr) minmax(220px,.6fr);
+  gap:clamp(28px,5vw,74px);
+  align-items:center;
+}
+
+.block-pyramid{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  min-height:470px;
+  justify-content:center;
+  padding:20px 0;
+}
+
+.block-tier{
+  --tier-accent:var(--sky);
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:126px;
+  padding:22px clamp(26px,4vw,58px);
+  text-align:center;
+  background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.07));
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 18px 45px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.16);
+  transition:transform .35s cubic-bezier(.16,1,.3,1),filter .35s,background .35s;
+  animation:block-float 5.4s ease-in-out infinite;
+}
+
+.block-tier::after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  pointer-events:none;
+  background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.18) 47%,transparent 70%);
+  transform:translateX(-120%);
+  animation:block-shimmer 5.6s ease-in-out infinite;
+}
+
+.block-tier:hover{
+  transform:translateY(-8px) scale(1.015);
+  filter:brightness(1.12);
+  background:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.09));
+}
+
+.block-tier--lead{
+  --tier-accent:var(--acid);
+  width:46%;
+  clip-path:polygon(24% 0,76% 0,100% 100%,0 100%);
+  border-radius:26px 26px 14px 14px;
+  background:linear-gradient(145deg,rgba(223,255,88,.27),rgba(255,255,255,.08));
+}
+
+.block-tier--advisor{
+  --tier-accent:var(--pink);
+  width:70%;
+  clip-path:polygon(13% 0,87% 0,100% 100%,0 100%);
+  animation-delay:-1.2s;
+  background:linear-gradient(145deg,rgba(255,79,154,.24),rgba(255,255,255,.08));
+}
+
+.block-tier--resident{
+  --tier-accent:var(--sky);
+  width:94%;
+  clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);
+  border-radius:14px 14px 26px 26px;
+  animation-delay:-2.4s;
+  background:linear-gradient(145deg,rgba(159,220,255,.24),rgba(255,255,255,.08));
+}
+
+.block-tier__content{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+}
+
+.block-tier small{
+  color:var(--tier-accent);
+  font:600 9px "DM Mono",monospace;
+  letter-spacing:.13em;
+}
+
+.block-tier strong{
+  font-size:clamp(1.25rem,2.35vw,2.45rem);
+  line-height:1.2;
+}
+
+.block-tier span{
+  color:rgba(255,255,255,.72);
+  font-size:clamp(11px,.95vw,14px);
+  line-height:1.65;
+}
+
+.block-structure__notes{
+  display:grid;
+  gap:14px;
+}
+
+.block-note{
+  position:relative;
+  padding:20px 22px 20px 52px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:22px;
+  background:rgba(255,255,255,.07);
+  transition:transform .3s ease,background .3s ease,border-color .3s ease;
+}
+
+.block-note:hover{
+  transform:translateX(7px);
+  background:rgba(255,255,255,.11);
+  border-color:rgba(255,255,255,.28);
+}
+
+.block-note b{
+  position:absolute;
+  left:18px;
+  top:20px;
+  display:grid;
+  place-items:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--acid);
+  color:#101723;
+  font:800 9px "DM Mono",monospace;
+  box-shadow:0 0 0 6px rgba(223,255,88,.09);
+}
+
+.block-note strong{
+  display:block;
+  margin-bottom:7px;
+  font-size:clamp(15px,1.15vw,18px);
+}
+
+.block-note p{
+  margin:0;
+  color:rgba(255,255,255,.66);
+  font-size:clamp(12px,.98vw,15px);
+  line-height:1.75;
+}
+
+.block-student-badge{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-top:8px;
+  padding:18px 20px;
+  border-radius:22px;
+  color:#101723;
+  background:linear-gradient(120deg,var(--acid),#fff3a6 62%,#fff);
+  box-shadow:0 14px 38px rgba(223,255,88,.13);
+  transform:rotate(-1.2deg);
+  animation:badge-bob 3.8s ease-in-out infinite;
+}
+
+.block-student-badge span{
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#111827;
+  color:#fff;
+  font-size:20px;
+}
+
+.block-student-badge strong{
+  display:block;
+  font-size:clamp(15px,1.2vw,19px);
+  line-height:1.35;
+}
+
+.block-student-badge small{
+  display:block;
+  margin-top:3px;
+  font-size:11px;
+  line-height:1.55;
+  letter-spacing:0;
+  text-transform:none;
+  font-family:"Noto Sans JP",sans-serif;
+}
+
+.block-spark{
+  position:absolute;
+  z-index:-1;
+  display:grid;
+  place-items:center;
+  color:var(--acid);
+  font-size:18px;
+  opacity:.7;
+  animation:spark-pop 3.6s ease-in-out infinite;
+}
+.block-spark.s1{left:4%;top:22%;animation-delay:-.7s}.block-spark.s2{right:5%;top:34%;color:var(--pink);font-size:25px;animation-delay:-1.9s}.block-spark.s3{left:46%;bottom:4%;color:var(--sky);font-size:14px;animation-delay:-2.8s}
+
+@keyframes block-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes block-shimmer{0%,62%,100%{transform:translateX(-120%)}78%{transform:translateX(120%)}}
+@keyframes block-glow{from{transform:translate3d(-2%,-2%,0) scale(.98)}to{transform:translate3d(3%,2%,0) scale(1.04)}}
+@keyframes badge-bob{0%,100%{transform:rotate(-1.2deg) translateY(0)}50%{transform:rotate(1deg) translateY(-5px)}}
+@keyframes spark-pop{0%,100%{transform:translateY(0) rotate(0deg) scale(.8);opacity:.32}50%{transform:translateY(-12px) rotate(18deg) scale(1.15);opacity:.9}}
+
+.motion-paused .block-tier,
+.motion-paused .block-tier::after,
+.motion-paused .block-structure::before,
+.motion-paused .block-student-badge,
+.motion-paused .block-spark{
+  animation-play-state:paused!important;
+}
+
+@media(max-width:900px){
+  .block-structure{margin-top:9vh;padding:30px 22px;border-radius:28px}
+  .block-structure__head{grid-template-columns:1fr;gap:16px}
+  .block-structure__body{grid-template-columns:1fr;gap:28px}
+  .block-pyramid{min-height:410px}
+  .block-tier{min-height:112px}
+  .block-tier--lead{width:56%}
+  .block-tier--advisor{width:78%}
+  .block-tier--resident{width:98%}
+  .block-structure__notes{grid-template-columns:1fr 1fr}
+  .block-student-badge{grid-column:1/-1}
+}
+
+@media(max-width:620px){
+  .block-structure{margin-left:-2vw;margin-right:-2vw;padding:26px 14px 22px;border-radius:24px}
+  .block-structure__head h3{font-size:clamp(2.1rem,12vw,3.4rem)}
+  .block-pyramid{min-height:355px;gap:6px}
+  .block-tier{min-height:96px;padding:18px 18px}
+  .block-tier--lead{width:64%}
+  .block-tier--advisor{width:82%}
+  .block-tier--resident{width:100%}
+  .block-tier strong{font-size:clamp(1.05rem,5.6vw,1.4rem)}
+  .block-tier span{font-size:10px}
+  .block-structure__notes{grid-template-columns:1fr}
+  .block-student-badge{grid-column:auto;transform:none}
+  .block-student-badge small{font-size:10px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .block-tier,.block-tier::after,.block-structure::before,.block-student-badge,.block-spark{animation:none!important}
+  .block-tier,.block-note{transition:none}
+}
