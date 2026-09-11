@@ -1,0 +1,36 @@
+/* Mission 01: fixed Osaka city background while the foreground content scrolls. */
+.m01 {
+  overflow: clip;
+  background-image:
+    linear-gradient(120deg, rgba(5, 10, 18, 0.90), rgba(6, 12, 22, 0.46) 52%, rgba(5, 10, 18, 0.68)),
+    url('/images/umeda-career-view.png');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.m01-photo,
+.m01-shade {
+  display: none;
+}
+
+.m01-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep text legible without hiding the city image. */
+.m01-statement {
+  background: rgba(10, 16, 27, 0.46);
+  backdrop-filter: blur(20px) saturate(1.12);
+  -webkit-backdrop-filter: blur(20px) saturate(1.12);
+}
+
+@media (max-width: 760px) {
+  .m01 {
+    /* Mobile browsers often disable fixed background painting; keep the same crop gracefully. */
+    background-attachment: scroll;
+    background-position: 58% center;
+  }
+}
