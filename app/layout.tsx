@@ -4,6 +4,7 @@ import "./remove-floating-nav.css";
 import "./mission-01-fixed-background.css";
 import "./journey-background.css";
 import "./career-line-contrast.css";
+import "./fixed-site-background.css";
 
 export const metadata: Metadata = {
   title: "VEXUM ACADEMY｜IT・AI SEMINAR",
