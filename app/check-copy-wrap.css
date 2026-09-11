@@ -10,6 +10,11 @@
   display: none !important;
 }
 
+/* Mission 04 comprehension check is intentionally removed from the page. */
+.m04 .check-block {
+  display: none !important;
+}
+
 @media (max-width: 820px) {
   .check-block strong {
     width: 100%;
