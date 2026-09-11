@@ -1,5 +1,24 @@
 # VEXUM学園 ITリテラシー基礎講座
 
+## Web教材サイト
+
+`requirements/vexum-seminar-material-requirements.md` を教材内容の正本として、Next.js で閲覧用サイトを構成しています。
+
+- 左側の章一覧から8テーマを移動できます。
+- スマートフォンでは章一覧をメニューとして開けます。
+- 「講師モード」ではサイドバーを隠し、前後ボタンまたは左右矢印キーで順番に進められます。
+
+### ローカル実行
+
+```bash
+pnpm install
+pnpm dev
+```
+
+### Vercelへの公開
+
+GitHubリポジトリをVercelプロジェクトへ接続し、Framework Preset に Next.js を選択してください。`main` への更新で自動デプロイされます。
+
 業務で必要となる基本的なIT操作とAI活用を、初学者向けに整理した社内セミナー資料です。
 
 ## 収録資料
