@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./dense-motion.css";
 import "./heading-scale.css";
+import "./immersive-redesign.css";
 
 export const metadata: Metadata = {
   title: "VEXUM学園｜ITリテラシー基礎講座",
