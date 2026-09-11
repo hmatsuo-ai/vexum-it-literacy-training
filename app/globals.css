@@ -69,11 +69,9 @@
 }
 @keyframes reveal {
   from {
-    opacity: 0.15;
-    transform: translateY(70px) scale(0.98);
+    transform: translateY(42px) scale(0.99);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }
