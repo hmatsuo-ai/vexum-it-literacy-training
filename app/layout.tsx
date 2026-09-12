@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import BackgroundRotator from "./background-rotator";
 import Mission03Foundations from "./mission-03-foundations";
+import Mission03GuiCli from "./mission-03-gui-cli";
 import Mission03Shortcuts from "./mission-03-shortcuts";
 import Mission03Sync from "./mission-03-sync";
 import Mission04Embeddings from "./mission-04-embeddings";
@@ -17,6 +18,7 @@ import "./check-copy-wrap.css";
 import "./block-structure.css";
 import "./mission-03-foundations.css";
 import "./mission-03-data-basics.css";
+import "./mission-03-gui-cli.css";
 import "./user-photo-sources.css";
 import "./mission-03-spacing-fix.css";
 import "./mission-03-shortcuts.css";
@@ -48,6 +50,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <BackgroundRotator />
         {children}
         <Mission03Foundations />
+        <Mission03GuiCli />
         <Mission03Shortcuts />
         <Mission03Sync />
         <Mission04Embeddings />
