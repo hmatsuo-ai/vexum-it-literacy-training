@@ -1,7 +1,5 @@
-/* Keep the lime mission strip readable at every viewport size.
- * The previous marquee could be paused mid-animation, leaving a word clipped at
- * the left edge (for example, CREATE appearing as "TE"). Render one complete
- * sequence instead of freezing a duplicated scrolling sentence mid-word.
+/* Keep the lime mission strip moving without ever clipping a word.
+ * The full sequence stays inside a safe-width track and gently travels left/right.
  */
 .ticker {
   overflow: hidden !important;
@@ -22,19 +20,26 @@
 .ticker > div::before {
   content: "DISCOVER ✦ FOUNDATION ✦ INTELLIGENCE ✦ CREATE ✦ BUILD ✦ CHANGE";
   display: block;
-  width: 100%;
+  width: calc(100% - 12vw);
+  margin: 0 auto;
   white-space: nowrap;
   color: #0b1020;
-  font: 700 clamp(7px, 1.8vw, 13px) / 1.45 "DM Mono", monospace;
+  font: 700 clamp(5px, 1.7vw, 13px) / 1.45 "DM Mono", monospace;
   letter-spacing: .075em;
   text-align: center;
+  transform: translateX(-3vw);
+  animation: ticker-safe-drift 8s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
-/* Motion OFF should always settle on a clean, complete line rather than keeping
- * the old marquee at whatever partial translation happened to be on screen. */
-.motion-paused .ticker > div {
-  animation: none !important;
-  transform: none !important;
+@keyframes ticker-safe-drift {
+  from { transform: translateX(-3vw); }
+  to { transform: translateX(3vw); }
+}
+
+/* Motion OFF still pauses cleanly, but the text remains complete and centered. */
+.motion-paused .ticker > div::before {
+  animation-play-state: paused !important;
 }
 
 @media (max-width: 700px) {
@@ -43,6 +48,22 @@
   }
 
   .ticker > div::before {
-    letter-spacing: .04em;
+    width: calc(100% - 8vw);
+    font-size: clamp(5px, 1.55vw, 10px);
+    letter-spacing: .035em;
+    transform: translateX(-2vw);
+    animation-name: ticker-safe-drift-mobile;
+  }
+
+  @keyframes ticker-safe-drift-mobile {
+    from { transform: translateX(-2vw); }
+    to { transform: translateX(2vw); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker > div::before {
+    animation: none !important;
+    transform: none !important;
   }
 }
