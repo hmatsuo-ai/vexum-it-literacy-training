@@ -5,6 +5,7 @@ import Mission03Sync from "./mission-03-sync";
 import Mission04Embeddings from "./mission-04-embeddings";
 import Mission04Probability from "./mission-04-probability";
 import "./experience.css";
+import "./mission-05-compact.css";
 import "./remove-floating-nav.css";
 import "./mission-01-fixed-background.css";
 import "./journey-background.css";
