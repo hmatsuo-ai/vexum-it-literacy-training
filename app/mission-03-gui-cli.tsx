@@ -8,6 +8,8 @@ export default function Mission03GuiCli() {
 
   useEffect(() => {
     let createdHost: HTMLDivElement | null = null;
+    let transferLabel: HTMLElement | null = null;
+    let originalTransferLabel = "";
 
     const mount = () => {
       const basics = document.querySelector<HTMLElement>("#mission-03 .m03u-basic-groups");
@@ -16,11 +18,23 @@ export default function Mission03GuiCli() {
       createdHost = document.createElement("div");
       createdHost.className = "m03-gui-cli-host";
       basics.insertAdjacentElement("afterend", createdHost);
+
+      transferLabel = document.querySelector<HTMLElement>("#mission-03 .m03u-transfer-head small");
+      if (transferLabel) {
+        originalTransferLabel = transferLabel.textContent ?? "";
+        transferLabel.textContent = "01-E / TRANSFER";
+      }
+
       setHost(createdHost);
       return true;
     };
 
-    if (mount()) return () => createdHost?.remove();
+    const cleanup = () => {
+      if (transferLabel && originalTransferLabel) transferLabel.textContent = originalTransferLabel;
+      createdHost?.remove();
+    };
+
+    if (mount()) return cleanup;
 
     const observer = new MutationObserver(() => {
       if (mount()) observer.disconnect();
@@ -30,7 +44,7 @@ export default function Mission03GuiCli() {
 
     return () => {
       observer.disconnect();
-      createdHost?.remove();
+      cleanup();
     };
   }, []);
 
