@@ -27,6 +27,7 @@ import "./mission-03-hardware-clip-fix.css";
 import "./motion-policy.css";
 import "./mission-04-embeddings.css";
 import "./mission-04-probability.css";
+import "./heading-scale.css";
 
 export const metadata: Metadata = {
   title: "VEXUM ACADEMY｜IT・AI SEMINAR",
