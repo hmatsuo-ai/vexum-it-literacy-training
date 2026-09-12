@@ -1,111 +1,194 @@
 /* User-provided city photos only.
- * Loaded last: every visible photographic layer is sourced from the user's uploads.
- * Background photography stays fixed to the viewport; text/cards/foreground scroll above it.
+ * The full site now shares one viewport-fixed photographic backdrop.
+ * Photos rotate automatically while all text/cards/foreground content scrolls normally above it.
  */
 
-/* Continuous fixed backdrop used behind translucent sections. */
-body::before {
+:root {
+  --user-photo-cycle: 40s;
+}
+
+/* Two fixed layers alternate so image changes cross-fade instead of flashing. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
   background-color: #0a111b !important;
-  background-image:
-    linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
-    url('/images/user-umeda-sunset.jpg') !important;
   background-position: center center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
+  transform: none !important;
+  will-change: opacity;
 }
 
-/* Hero photo is a viewport-locked image layer. */
-.hero-cinematic {
-  background-color: #070b12 !important;
+body::before {
+  opacity: 1;
   background-image:
-    linear-gradient(90deg, rgba(5, 8, 14, .80), rgba(5, 8, 14, .33) 52%, rgba(5, 8, 14, .12)),
-    linear-gradient(0deg, rgba(5, 8, 14, .72), transparent 58%),
+    linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
     url('/images/user-dotonbori-night.jpg') !important;
-  background-position: center 48% !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
+  animation: user-photo-layer-a var(--user-photo-cycle) linear infinite;
 }
 
-.hero-photo {
+body::after {
+  opacity: 0;
+  background-image:
+    linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+    url('/images/user-namba-station.jpg') !important;
+  animation: user-photo-layer-b var(--user-photo-cycle) linear infinite;
+}
+
+/*
+ * 40-second loop:
+ * 00–10s  Dotonbori
+ * 10–20s  Namba
+ * 20–30s  Osaka Station
+ * 30–40s  Umeda sunset
+ * A short overlap at each boundary creates a cross-fade.
+ */
+@keyframes user-photo-layer-a {
+  0%, 20% {
+    opacity: 1;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-dotonbori-night.jpg');
+  }
+  25% {
+    opacity: 0;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-dotonbori-night.jpg');
+  }
+  25.01%, 45% {
+    opacity: 0;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-osaka-station.jpg');
+  }
+  50%, 70% {
+    opacity: 1;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-osaka-station.jpg');
+  }
+  75% {
+    opacity: 0;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-osaka-station.jpg');
+  }
+  75.01%, 95% {
+    opacity: 0;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-dotonbori-night.jpg');
+  }
+  100% {
+    opacity: 1;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-dotonbori-night.jpg');
+  }
+}
+
+@keyframes user-photo-layer-b {
+  0%, 20% {
+    opacity: 0;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-namba-station.jpg');
+  }
+  25%, 45% {
+    opacity: 1;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-namba-station.jpg');
+  }
+  50% {
+    opacity: 0;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-namba-station.jpg');
+  }
+  50.01%, 70% {
+    opacity: 0;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-umeda-sunset.jpg');
+  }
+  75%, 95% {
+    opacity: 1;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-umeda-sunset.jpg');
+  }
+  100% {
+    opacity: 0;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-umeda-sunset.jpg');
+  }
+}
+
+/* Section-specific images are removed so every section exposes the same rotating fixed backdrop. */
+.hero-cinematic,
+.manifesto,
+.m01 {
+  background-color: transparent !important;
+  background-image: linear-gradient(120deg, rgba(5, 9, 16, 0.52), rgba(5, 10, 18, 0.20) 54%, rgba(5, 9, 16, 0.38)) !important;
+  background-position: initial !important;
+  background-size: auto !important;
+  background-repeat: repeat !important;
+  background-attachment: scroll !important;
+}
+
+.hero-photo,
+.manifesto-photo,
+.m01-photo,
+.m01-shade {
   display: none !important;
   background: none !important;
   animation: none !important;
   transform: none !important;
 }
 
-.manifesto {
-  background-color: #070b12 !important;
-  background-image:
-    linear-gradient(120deg, rgba(7, 11, 19, 0.88), rgba(7, 11, 19, 0.42) 55%, rgba(7, 11, 19, 0.68)),
-    url('/images/user-osaka-station.jpg') !important;
-  background-position: center center !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-}
-
-.manifesto-photo {
-  display: none !important;
-  background: none !important;
-  transform: none !important;
-}
-
-.m01 {
-  background-color: #070b12 !important;
-  background-image:
-    linear-gradient(120deg, rgba(5, 10, 18, 0.90), rgba(6, 12, 22, 0.44) 52%, rgba(5, 10, 18, 0.68)),
-    url('/images/user-umeda-sunset.jpg') !important;
-  background-position: center center !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-}
-
-.m01-photo,
-.m01-shade {
-  display: none !important;
-  background: none !important;
-}
-
-/* Mission 02 keeps the split layout, but the city photo itself is locked to the viewport.
- * The panel, headings, cards and labels remain normal scrolling foreground content. */
+/* Mission 02 keeps the split composition; the left side simply reveals the shared fixed backdrop. */
 .m02-photo {
-  background-image:
-    linear-gradient(0deg, rgba(7, 11, 18, 0.38), rgba(7, 11, 18, 0.08)),
-    url('/images/user-namba-station.jpg') !important;
-  background-position: left center !important;
-  background-size: 100vw auto !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
+  background: transparent !important;
   filter: none !important;
 }
 
-/* Prevent decorative section layers from behaving like moving background images. */
+.m02-photo::after {
+  background: linear-gradient(0deg, rgba(7, 11, 18, 0.48), rgba(7, 11, 18, 0.06) 62%, transparent) !important;
+}
+
+/* Decorative graphics remain attached to their sections; only photography is viewport-fixed. */
 .hero-grid,
 .tech-grid,
 .token-rain,
 .security-scan {
-  background-attachment: fixed;
+  background-attachment: scroll;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none !important;
+    opacity: 1 !important;
+    background-image:
+      linear-gradient(108deg, rgba(4, 8, 15, 0.62), rgba(4, 8, 15, 0.20) 52%, rgba(4, 8, 15, 0.46)),
+      url('/images/user-umeda-sunset.jpg') !important;
+  }
+
+  body::after {
+    animation: none !important;
+    opacity: 0 !important;
+  }
 }
 
 @media (max-width: 760px) {
-  /* iOS/Safari handles background-attachment: fixed unreliably.
-   * The site-wide fixed pseudo-element remains the fallback background layer. */
-  .hero-cinematic,
-  .manifesto,
-  .m01,
-  .m02-photo {
-    background-attachment: scroll !important;
-  }
-
-  .m01 {
+  body::before,
+  body::after {
     background-position: 58% center !important;
-  }
-
-  .m02-photo {
-    background-position: center center !important;
-    background-size: cover !important;
   }
 }
