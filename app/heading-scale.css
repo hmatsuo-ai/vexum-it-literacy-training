@@ -1,4 +1,6 @@
-/* Strengthen the hierarchy of the learning-outcome heading shown at the top of each mission body. */
+/* Global heading scale — keep hierarchy, reduce oversized headings by roughly one step. */
+
+/* Existing learning-outcome heading styling. */
 .future {
   display: grid;
   gap: 10px;
@@ -12,11 +14,118 @@
   display: block;
   max-width: 820px;
   color: var(--ink);
-  font:
-    800 clamp(2.15rem, 4.1vw, 3.65rem) / 1.18 Montserrat,
-    "Noto Sans JP",
-    sans-serif;
+  font: 800 clamp(1.9rem, 3.6vw, 3.2rem) / 1.18 Montserrat, "Noto Sans JP", sans-serif;
   letter-spacing: -0.055em;
+}
+
+/* Site / mission hero headings. */
+.hero-copy h1 {
+  font-size: clamp(3.8rem, 8.6vw, 8.8rem) !important;
+}
+
+.manifesto-copy h2 {
+  font-size: clamp(3.5rem, 7.1vw, 7.6rem) !important;
+}
+
+.mission-index a strong {
+  font-size: clamp(1.45rem, 2.65vw, 3rem) !important;
+}
+
+.m01-title h2 {
+  font-size: clamp(3.8rem, 7.9vw, 8.6rem) !important;
+}
+
+.m01-title h3 {
+  font-size: clamp(1.5rem, 2.65vw, 3.1rem) !important;
+}
+
+.m01-statement strong {
+  font-size: clamp(1.75rem, 3.5vw, 4rem) !important;
+}
+
+.m02-panel > h2 {
+  font-size: clamp(2.8rem, 5.3vw, 6.2rem) !important;
+}
+
+.career-line li span {
+  font-size: clamp(1.6rem, 2.65vw, 2.85rem) !important;
+}
+
+.m02-caption strong {
+  font-size: clamp(1.6rem, 2.6vw, 2.7rem) !important;
+}
+
+/* VEXUM block structure. */
+.block-structure__head h3 {
+  font-size: clamp(2.8rem, 6vw, 7rem) !important;
+}
+
+.block-tier strong {
+  font-size: clamp(1.25rem, 2.2vw, 2.45rem) !important;
+}
+
+/* Mission 03 — PC basics. */
+.m03u-hero h2 {
+  font-size: clamp(3rem, 5.3vw, 6.8rem) !important;
+}
+
+.m03u-section-title h3 {
+  font-size: clamp(2rem, 3.65vw, 4.8rem) !important;
+}
+
+.m03u-basic-group-head > h4 {
+  font-size: clamp(1.5rem, 2.3vw, 2.8rem) !important;
+}
+
+.m03-shortcuts__head h3 {
+  font-size: clamp(2.9rem, 6.1vw, 7rem) !important;
+}
+
+.m03-accounts__head h3 {
+  font-size: clamp(2.75rem, 5.8vw, 6.5rem) !important;
+}
+
+.m03u-sync-head h4,
+.m03u-transfer-head h4 {
+  font-size: clamp(1.9rem, 3.4vw, 3.8rem) !important;
+}
+
+/* Mission 04 — LLM / embeddings / probability. */
+.m04-copy h2 {
+  font-size: clamp(2.9rem, 5.7vw, 6.1rem) !important;
+}
+
+.m04-embed__head h3 {
+  font-size: clamp(3.3rem, 7vw, 7.9rem) !important;
+}
+
+.m04-prob__head h3 {
+  font-size: clamp(3.15rem, 6.5vw, 7.6rem) !important;
+}
+
+/* Later mission headings. */
+.m05-title h2 {
+  font-size: clamp(3rem, 5.9vw, 6.3rem) !important;
+}
+
+.m06-intro h2 {
+  font-size: clamp(3rem, 5.9vw, 6.3rem) !important;
+}
+
+.req-sheet h3 {
+  font-size: clamp(1.55rem, 2.6vw, 2.8rem) !important;
+}
+
+.m07-hero h2 {
+  font-size: clamp(3rem, 6vw, 6.5rem) !important;
+}
+
+.m08-title h2 {
+  font-size: clamp(3rem, 6vw, 6.5rem) !important;
+}
+
+.finale h2 {
+  font-size: clamp(3.2rem, 6.5vw, 7rem) !important;
 }
 
 @media (max-width: 760px) {
@@ -27,7 +136,18 @@
   }
 
   .future b {
-    font-size: clamp(1.8rem, 8.5vw, 2.65rem);
+    font-size: clamp(1.65rem, 7.5vw, 2.35rem);
     line-height: 1.22;
   }
+
+  .hero-copy h1 { font-size: clamp(3.2rem, 15vw, 5.8rem) !important; }
+  .manifesto-copy h2 { font-size: clamp(3rem, 13vw, 5.2rem) !important; }
+  .m01-title h2 { font-size: clamp(3.1rem, 14vw, 5.6rem) !important; }
+  .m02-panel > h2 { font-size: clamp(2.6rem, 11vw, 4.6rem) !important; }
+  .block-structure__head h3 { font-size: clamp(2.35rem, 11.5vw, 3.9rem) !important; }
+  .m03u-hero h2 { font-size: clamp(2.7rem, 11.5vw, 4.8rem) !important; }
+  .m03-shortcuts__head h3 { font-size: clamp(2.7rem, 11.5vw, 4.9rem) !important; }
+  .m03-accounts__head h3 { font-size: clamp(2.6rem, 11vw, 4.7rem) !important; }
+  .m04-embed__head h3 { font-size: clamp(2.7rem, 13vw, 5.1rem) !important; }
+  .m04-prob__head h3 { font-size: clamp(2.7rem, 11.5vw, 4.9rem) !important; }
 }
