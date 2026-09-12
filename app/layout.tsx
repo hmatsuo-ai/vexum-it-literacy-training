@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BackgroundRotator from "./background-rotator";
 import Mission03Foundations from "./mission-03-foundations";
 import Mission03Shortcuts from "./mission-03-shortcuts";
 import Mission03Sync from "./mission-03-sync";
@@ -32,6 +33,7 @@ import "./heading-scale.css";
 import "./mission-03-hardware-final-fit.css";
 import "./mission-07-heading-wrap.css";
 import "./mission-05-ai-landscape.css";
+import "./background-rotator.css";
 
 export const metadata: Metadata = {
   title: "VEXUM ACADEMY｜IT・AI SEMINAR",
@@ -42,6 +44,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ja">
       <body>
+        <BackgroundRotator />
         {children}
         <Mission03Foundations />
         <Mission03Shortcuts />
