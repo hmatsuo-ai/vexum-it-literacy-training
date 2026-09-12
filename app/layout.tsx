@@ -33,6 +33,7 @@ import "./heading-scale.css";
 import "./mission-03-hardware-final-fit.css";
 import "./mission-07-heading-wrap.css";
 import "./mission-05-ai-landscape.css";
+import "./mission-05-provider-readability.css";
 import "./background-rotator.css";
 
 export const metadata: Metadata = {
