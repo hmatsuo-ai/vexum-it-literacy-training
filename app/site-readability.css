@@ -88,9 +88,16 @@
 /* Small floating nodes also need a stable contrast floor as the rotating image
  * changes from dark Dotonbori to brighter station / sunset scenes. */
 .orbit-node {
+  display: flex;
+  align-items: center;
+  width: 250px;
   background: rgba(6, 12, 21, .86) !important;
   border-color: rgba(255, 255, 255, .24) !important;
   box-shadow: 0 18px 54px rgba(0, 0, 0, .34) !important;
+}
+
+.orbit-node span {
+  white-space: nowrap;
 }
 
 /* Mission 02 exposes the shared image in the left pane. Strengthen its shade and
@@ -158,5 +165,11 @@
   .m08-notes {
     padding: 22px !important;
     border-radius: 22px;
+  }
+}
+
+@media (max-width: 700px) {
+  .orbit-node {
+    width: 100%;
   }
 }
