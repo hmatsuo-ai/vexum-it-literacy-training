@@ -1,0 +1,19 @@
+/* Mission 07 — keep the long Japanese title on two intentional lines. */
+.m07-hero h2 {
+  max-width: 9.6em;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  text-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .m07-hero h2 {
+    max-width: 9.3em;
+  }
+}
+
+@media (max-width: 620px) {
+  .m07-hero h2 {
+    max-width: 9.1em;
+  }
+}
