@@ -4,6 +4,7 @@ import Mission03Shortcuts from "./mission-03-shortcuts";
 import Mission03Sync from "./mission-03-sync";
 import Mission04Embeddings from "./mission-04-embeddings";
 import Mission04Probability from "./mission-04-probability";
+import Mission05AILandscape from "./mission-05-ai-landscape";
 import "./experience.css";
 import "./mission-05-compact.css";
 import "./remove-floating-nav.css";
@@ -30,6 +31,7 @@ import "./mission-04-probability.css";
 import "./heading-scale.css";
 import "./mission-03-hardware-final-fit.css";
 import "./mission-07-heading-wrap.css";
+import "./mission-05-ai-landscape.css";
 
 export const metadata: Metadata = {
   title: "VEXUM ACADEMY｜IT・AI SEMINAR",
@@ -46,6 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Mission03Sync />
         <Mission04Embeddings />
         <Mission04Probability />
+        <Mission05AILandscape />
       </body>
     </html>
   );
