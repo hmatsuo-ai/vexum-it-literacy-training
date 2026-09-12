@@ -1,0 +1,119 @@
+/* Mission 05 — flatten the provider comparison so it reads like a table, not nested cards. */
+.m05-ai__provider-grid {
+  gap: clamp(18px, 2vw, 26px);
+  align-items: stretch;
+}
+
+.provider-card {
+  --provider-accent: var(--sky);
+  position: relative;
+  min-height: 0;
+  padding: 0 clamp(24px, 2vw, 32px) clamp(24px, 2vw, 32px);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.22);
+  border-top: 4px solid var(--provider-accent);
+  border-radius: 24px;
+  background: rgba(8, 16, 28, .82);
+  -webkit-backdrop-filter: blur(18px) saturate(1.08);
+  backdrop-filter: blur(18px) saturate(1.08);
+  box-shadow: 0 24px 70px rgba(0,0,0,.18), inset 0 1px rgba(255,255,255,.05);
+}
+
+.provider-card.openai { --provider-accent: var(--sky); }
+.provider-card.anthropic { --provider-accent: #ffc580; }
+.provider-card.google { --provider-accent: #bcaeff; }
+
+.provider-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.34);
+  border-top-color: var(--provider-accent);
+}
+
+.provider-chain {
+  display: block;
+}
+
+.provider-chain > div {
+  min-height: 0;
+  padding: 22px 0 20px;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,.13) !important;
+  border-radius: 0;
+  background: transparent !important;
+}
+
+.provider-chain > div:last-of-type {
+  border-bottom-color: rgba(255,255,255,.2) !important;
+}
+
+.provider-chain > i {
+  display: none;
+}
+
+.provider-chain small {
+  margin: 0;
+  color: rgba(245,248,255,.68);
+  font: 700 9px "DM Mono", monospace;
+  letter-spacing: .13em;
+  line-height: 1.35;
+}
+
+.provider-chain strong {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.35rem, 1.8vw, 1.9rem);
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  overflow-wrap: anywhere;
+}
+
+.provider-chain > div:nth-of-type(2) strong {
+  color: var(--provider-accent);
+}
+
+.provider-card > p {
+  margin: 22px 0 0;
+  color: rgba(245,248,255,.82);
+  font-size: clamp(13px, .95vw, 15px);
+  line-height: 1.8;
+}
+
+@media (max-width: 1180px) {
+  .m05-ai__provider-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .provider-card {
+    width: 100%;
+  }
+
+  .provider-chain > div {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .provider-card {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+  }
+
+  .provider-chain > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    padding: 18px 0;
+  }
+
+  .provider-chain strong {
+    font-size: clamp(1.25rem, 6.4vw, 1.7rem);
+  }
+
+  .provider-card > p {
+    margin-top: 18px;
+  }
+}
