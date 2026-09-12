@@ -1,0 +1,162 @@
+/* Global readability pass for the photo-backed seminar UI.
+ * Keep the city photography visible, but ensure foreground copy never relies on
+ * the photo itself for contrast.
+ */
+
+:root {
+  --readability-surface: rgba(5, 10, 18, .76);
+  --readability-surface-soft: rgba(5, 10, 18, .62);
+  --readability-border: rgba(255, 255, 255, .18);
+  --readability-shadow: 0 24px 70px rgba(0, 0, 0, .28);
+}
+
+/* The rotating photo is decorative. Darken it globally so every section starts
+ * from a safe contrast baseline before section-specific surfaces are applied. */
+.site-background-rotator__layer {
+  filter: brightness(.68) saturate(.88) contrast(1.03);
+}
+
+/* Photo-backed opening sections were intentionally very transparent. Increase
+ * their tint while preserving the single fixed background image underneath. */
+.hero-cinematic,
+.manifesto,
+.m01 {
+  background-color: rgba(4, 8, 15, .16) !important;
+  background-image: linear-gradient(
+    120deg,
+    rgba(3, 7, 13, .84),
+    rgba(4, 9, 16, .55) 52%,
+    rgba(3, 7, 13, .74)
+  ) !important;
+}
+
+/* White text that sits directly over photography gets a subtle shadow instead
+ * of a heavy box, so large headings still feel cinematic. */
+.hero-copy,
+.manifesto-copy,
+.m01-title,
+.m02-station-label {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .78), 0 1px 2px rgba(0, 0, 0, .9);
+}
+
+.hero-bottom p,
+.manifesto-copy h2,
+.m01-title h2,
+.m01-title h3 {
+  color: rgba(255, 255, 255, .96) !important;
+}
+
+/* Glass cards on dark photography should be dark glass, not pale transparent
+ * glass. This keeps paragraph copy readable regardless of which photo is active. */
+.manifesto .glass,
+.m01 .glass {
+  background: rgba(5, 10, 18, .74) !important;
+  border-color: var(--readability-border) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(.9) !important;
+  backdrop-filter: blur(20px) saturate(.9) !important;
+  box-shadow: var(--readability-shadow) !important;
+}
+
+.manifesto-note p,
+.m01-statement p {
+  color: rgba(255, 255, 255, .9) !important;
+}
+
+/* Mission 01 had the biggest contrast problem: its explanatory copy sat directly
+ * on the city photo. Give the whole explanation a shared readable surface. */
+.m01-detail {
+  gap: clamp(24px, 4vw, 64px) !important;
+  padding: clamp(24px, 3vw, 42px) !important;
+  border: 1px solid var(--readability-border);
+  border-radius: 30px;
+  background: var(--readability-surface-soft);
+  -webkit-backdrop-filter: blur(18px) saturate(.9);
+  backdrop-filter: blur(18px) saturate(.9);
+  box-shadow: var(--readability-shadow);
+}
+
+.m01-detail p,
+.m01-detail blockquote {
+  color: rgba(255, 255, 255, .95) !important;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, .4);
+}
+
+.m01-detail blockquote {
+  border-left-color: #ff5da5 !important;
+}
+
+/* Small floating nodes also need a stable contrast floor as the rotating image
+ * changes from dark Dotonbori to brighter station / sunset scenes. */
+.orbit-node {
+  background: rgba(6, 12, 21, .86) !important;
+  border-color: rgba(255, 255, 255, .24) !important;
+  box-shadow: 0 18px 54px rgba(0, 0, 0, .34) !important;
+}
+
+/* Mission 02 exposes the shared image in the left pane. Strengthen its shade and
+ * text shadow without making the image disappear. */
+.m02-photo::after {
+  background: linear-gradient(
+    0deg,
+    rgba(4, 8, 14, .74),
+    rgba(4, 8, 14, .34) 58%,
+    rgba(4, 8, 14, .18)
+  ) !important;
+}
+
+.m02-station-label span,
+.m02-station-label small {
+  color: rgba(255, 255, 255, .94) !important;
+}
+
+/* Generic dark-section copy blocks: several missions use unboxed paragraphs.
+ * Add a local surface only to the paragraph clusters, not the full section. */
+.m03-bottom,
+.m04-facts,
+.m07-copy,
+.m08-notes {
+  padding: clamp(18px, 2.2vw, 34px);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 26px;
+  background: rgba(4, 9, 16, .56);
+  -webkit-backdrop-filter: blur(14px) saturate(.92);
+  backdrop-filter: blur(14px) saturate(.92);
+}
+
+.m03-bottom p,
+.m04-facts p,
+.m04-facts blockquote,
+.m07-copy p,
+.m07-copy blockquote,
+.m08-notes p,
+.m08-notes blockquote {
+  color: rgba(255, 255, 255, .92) !important;
+}
+
+/* The completion/check blocks can appear over dynamic backgrounds too. */
+.m01 > .m01-content > .check-block,
+.m03 .check-block,
+.m04 > .check-block,
+.m07 > .check-block,
+.m08 > .check-block {
+  border: 1px solid rgba(255, 255, 255, .14) !important;
+  border-radius: 22px;
+  background: rgba(4, 9, 16, .62);
+  -webkit-backdrop-filter: blur(14px) saturate(.9);
+  backdrop-filter: blur(14px) saturate(.9);
+}
+
+@media (max-width: 760px) {
+  .site-background-rotator__layer {
+    filter: brightness(.62) saturate(.84) contrast(1.03);
+  }
+
+  .m01-detail,
+  .m03-bottom,
+  .m04-facts,
+  .m07-copy,
+  .m08-notes {
+    padding: 22px !important;
+    border-radius: 22px;
+  }
+}
