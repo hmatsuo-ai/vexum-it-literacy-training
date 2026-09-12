@@ -134,19 +134,21 @@
   content: "";
   position: absolute;
   z-index: -1;
-  inset: 8px 24px;
+  top: 8px;
+  bottom: 8px;
   border-radius: 999px;
 }
 
+/* The arrowhead overlaps the pill so it reads as one continuous shape. */
 .transfer-arrow::after {
   content: "";
   position: absolute;
+  z-index: -1;
   top: 50%;
-  width: 0;
-  height: 0;
+  width: 54px;
+  height: 56px;
   transform: translateY(-50%);
-  border-top: 24px solid transparent;
-  border-bottom: 24px solid transparent;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
 
 .transfer-arrow span {
@@ -165,23 +167,28 @@
 }
 
 .transfer-arrow.upload::before {
-  background: linear-gradient(90deg, rgba(75,92,255,.92), rgba(73,164,255,.92));
+  left: 24px;
+  right: 42px;
+  background: linear-gradient(90deg, rgba(75,92,255,.96), rgba(73,164,255,.96));
   box-shadow: 0 0 34px rgba(75,92,255,.18);
 }
 
 .transfer-arrow.upload::after {
-  right: 1px;
-  border-left: 32px solid #49a4ff;
+  right: 14px;
+  background: #49a4ff;
 }
 
 .transfer-arrow.download::before {
-  background: linear-gradient(90deg, rgba(105,213,165,.92), rgba(26,157,119,.92));
+  left: 42px;
+  right: 24px;
+  background: linear-gradient(90deg, rgba(105,213,165,.96), rgba(26,157,119,.96));
   box-shadow: 0 0 34px rgba(26,157,119,.16);
 }
 
 .transfer-arrow.download::after {
-  left: 1px;
-  border-right: 32px solid #69d5a5;
+  left: 14px;
+  background: #69d5a5;
+  transform: translateY(-50%) scaleX(-1);
 }
 
 .m03u-transfer-note {
@@ -222,7 +229,10 @@
   }
 
   .transfer-arrow::before {
-    inset: 6px 0;
+    left: 0;
+    right: 0;
+    top: 6px;
+    bottom: 6px;
   }
 
   .transfer-arrow.upload b::after { content: " ↓"; }
