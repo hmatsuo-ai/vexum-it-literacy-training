@@ -1,6 +1,6 @@
 # User-provided photo assets
 
-These web-optimized image files were created from the photos uploaded directly by the user for this seminar site.
+These web-optimized, high-resolution image files were created from the photos uploaded directly by the user for this seminar site. They are exported at 1536 × 1024 as high-quality JPEGs so the full-viewport backgrounds stay sharp without serving the much larger PNG originals.
 
 - `user-dotonbori-night.jpg` — Dotonbori night scene
 - `user-osaka-station.jpg` — Osaka Station scene
