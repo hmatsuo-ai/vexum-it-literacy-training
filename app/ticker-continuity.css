@@ -1,8 +1,8 @@
 /* Seamless mission marquee.
- * Render two identical copies in one moving track. Because each copy has exactly
- * the same width, translating the track by 50% lands on the second copy at the
- * same visual position. This removes the old reset point where text could vanish
- * or restart halfway through a word.
+ * A long repeated block is duplicated twice. Each block is wider than common
+ * desktop viewports, so there is always text available to enter from the left
+ * without exposing a large empty area. The two blocks are identical, making the
+ * animation reset visually seamless.
  */
 .ticker {
   overflow: hidden !important;
@@ -18,14 +18,14 @@
   text-align: left !important;
   font-size: 0 !important; /* hide the legacy text node; pseudo copies are the track */
   line-height: 1 !important;
-  transform: translate3d(0, 0, 0);
-  animation: ticker-seamless 28s linear infinite !important;
+  transform: translate3d(-50%, 0, 0);
+  animation: ticker-seamless-from-left 46s linear infinite !important;
   will-change: transform;
 }
 
 .ticker > div::before,
 .ticker > div::after {
-  content: "DISCOVER ✦ FOUNDATION ✦ INTELLIGENCE ✦ CREATE ✦ BUILD ✦ CHANGE ✦\00a0\00a0";
+  content: "DISCOVER ✦ FOUNDATION ✦ INTELLIGENCE ✦ CREATE ✦ BUILD ✦ CHANGE ✦   DISCOVER ✦ FOUNDATION ✦ INTELLIGENCE ✦ CREATE ✦ BUILD ✦ CHANGE ✦   DISCOVER ✦ FOUNDATION ✦ INTELLIGENCE ✦ CREATE ✦ BUILD ✦ CHANGE ✦   DISCOVER ✦ FOUNDATION ✦ INTELLIGENCE ✦ CREATE ✦ BUILD ✦ CHANGE ✦   DISCOVER ✦ FOUNDATION ✦ INTELLIGENCE ✦ CREATE ✦ BUILD ✦ CHANGE ✦   DISCOVER ✦ FOUNDATION ✦ INTELLIGENCE ✦ CREATE ✦ BUILD ✦ CHANGE ✦   ";
   display: block;
   flex: none;
   white-space: nowrap;
@@ -34,20 +34,21 @@
   letter-spacing: .08em;
 }
 
-@keyframes ticker-seamless {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-50%, 0, 0); }
+/* Move rightward: new words enter from the left edge. Because the second half is
+ * identical to the first, jumping from 0 back to -50% is visually invisible. */
+@keyframes ticker-seamless-from-left {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
 }
 
-/* The global motion toggle pauses the current position instead of resetting the
- * strip. Restarting motion continues from that exact point. */
+/* The global motion toggle pauses the current position instead of resetting it. */
 .motion-paused .ticker > div {
   animation-play-state: paused !important;
 }
 
 @media (max-width: 700px) {
   .ticker > div {
-    animation-duration: 24s !important;
+    animation-duration: 40s !important;
   }
 
   .ticker > div::before,
@@ -60,10 +61,6 @@
 @media (prefers-reduced-motion: reduce) {
   .ticker > div {
     animation: none !important;
-    transform: none !important;
-  }
-
-  .ticker > div::after {
-    display: none;
+    transform: translate3d(-50%, 0, 0) !important;
   }
 }
