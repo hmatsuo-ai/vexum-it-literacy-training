@@ -1,0 +1,13 @@
+/* Repository-wide motion policy overrides.
+ * Background scan-light effects are intentionally prohibited because they add visual noise
+ * without improving comprehension. Keep motion local to meaningful UI elements instead.
+ */
+
+/* Mission 03 previously used a diagonal light band sweeping across the whole chapter. */
+.m03-upgrade::after {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+  background: none !important;
+  filter: none !important;
+}
