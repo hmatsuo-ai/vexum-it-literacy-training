@@ -1,69 +1,69 @@
-/* Keep the lime mission strip moving without ever clipping a word.
- * The full sequence stays inside a safe-width track and gently travels left/right.
+/* Seamless mission marquee.
+ * Render two identical copies in one moving track. Because each copy has exactly
+ * the same width, translating the track by 50% lands on the second copy at the
+ * same visual position. This removes the old reset point where text could vanish
+ * or restart halfway through a word.
  */
 .ticker {
   overflow: hidden !important;
-  padding: 15px clamp(14px, 2vw, 32px) !important;
+  padding: 15px 0 !important;
 }
 
 .ticker > div {
-  width: 100% !important;
-  min-width: 0 !important;
+  display: flex !important;
+  align-items: center;
+  width: max-content !important;
+  min-width: max-content !important;
   white-space: nowrap !important;
-  text-align: center !important;
-  animation: none !important;
-  transform: none !important;
-  font-size: 0 !important;
+  text-align: left !important;
+  font-size: 0 !important; /* hide the legacy text node; pseudo copies are the track */
   line-height: 1 !important;
-}
-
-.ticker > div::before {
-  content: "DISCOVER ✦ FOUNDATION ✦ INTELLIGENCE ✦ CREATE ✦ BUILD ✦ CHANGE";
-  display: block;
-  width: calc(100% - 12vw);
-  margin: 0 auto;
-  white-space: nowrap;
-  color: #0b1020;
-  font: 700 clamp(5px, 1.7vw, 13px) / 1.45 "DM Mono", monospace;
-  letter-spacing: .075em;
-  text-align: center;
-  transform: translateX(-3vw);
-  animation: ticker-safe-drift 8s ease-in-out infinite alternate;
+  transform: translate3d(0, 0, 0);
+  animation: ticker-seamless 28s linear infinite !important;
   will-change: transform;
 }
 
-@keyframes ticker-safe-drift {
-  from { transform: translateX(-3vw); }
-  to { transform: translateX(3vw); }
+.ticker > div::before,
+.ticker > div::after {
+  content: "DISCOVER ✦ FOUNDATION ✦ INTELLIGENCE ✦ CREATE ✦ BUILD ✦ CHANGE ✦\00a0\00a0";
+  display: block;
+  flex: none;
+  white-space: nowrap;
+  color: #0b1020;
+  font: 700 13px / 1.45 "DM Mono", monospace;
+  letter-spacing: .08em;
 }
 
-/* Motion OFF still pauses cleanly, but the text remains complete and centered. */
-.motion-paused .ticker > div::before {
+@keyframes ticker-seamless {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* The global motion toggle pauses the current position instead of resetting the
+ * strip. Restarting motion continues from that exact point. */
+.motion-paused .ticker > div {
   animation-play-state: paused !important;
 }
 
 @media (max-width: 700px) {
-  .ticker {
-    padding-inline: 10px !important;
+  .ticker > div {
+    animation-duration: 24s !important;
   }
 
-  .ticker > div::before {
-    width: calc(100% - 8vw);
-    font-size: clamp(5px, 1.55vw, 10px);
-    letter-spacing: .035em;
-    transform: translateX(-2vw);
-    animation-name: ticker-safe-drift-mobile;
-  }
-
-  @keyframes ticker-safe-drift-mobile {
-    from { transform: translateX(-2vw); }
-    to { transform: translateX(2vw); }
+  .ticker > div::before,
+  .ticker > div::after {
+    font-size: 10px;
+    letter-spacing: .055em;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ticker > div::before {
+  .ticker > div {
     animation: none !important;
     transform: none !important;
+  }
+
+  .ticker > div::after {
+    display: none;
   }
 }
