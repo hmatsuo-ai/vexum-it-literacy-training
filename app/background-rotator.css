@@ -1,0 +1,59 @@
+/* Timed fixed background rotation. Four user-provided photos cross-fade every 10 seconds. */
+
+/* Disable the legacy body pseudo-element background layers. */
+body::before,
+body::after {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
+
+.site-background-rotator {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #0a111b;
+}
+
+.site-background-rotator__layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  will-change: opacity;
+  animation: site-background-crossfade 40s linear infinite;
+}
+
+.site-background-rotator__layer:nth-child(1) { animation-delay: -2s; }
+.site-background-rotator__layer:nth-child(2) { animation-delay: 8s; }
+.site-background-rotator__layer:nth-child(3) { animation-delay: 18s; }
+.site-background-rotator__layer:nth-child(4) { animation-delay: 28s; }
+
+@keyframes site-background-crossfade {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  20% { opacity: 1; }
+  25% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-background-rotator__layer {
+    animation: none !important;
+    opacity: 0;
+  }
+
+  .site-background-rotator__layer:first-child {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-background-rotator__layer {
+    background-position: 58% center;
+  }
+}
