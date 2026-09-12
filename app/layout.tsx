@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Mission03Foundations from "./mission-03-foundations";
 import Mission03Shortcuts from "./mission-03-shortcuts";
 import Mission03Sync from "./mission-03-sync";
+import Mission04Embeddings from "./mission-04-embeddings";
 import Mission04Probability from "./mission-04-probability";
 import "./experience.css";
 import "./remove-floating-nav.css";
@@ -21,6 +22,7 @@ import "./mission-03-transfer.css";
 import "./mission-03-sync.css";
 import "./mission-03-location-visual.css";
 import "./mission-03-motion.css";
+import "./mission-04-embeddings.css";
 import "./mission-04-probability.css";
 
 export const metadata: Metadata = {
@@ -36,6 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Mission03Foundations />
         <Mission03Shortcuts />
         <Mission03Sync />
+        <Mission04Embeddings />
         <Mission04Probability />
       </body>
     </html>
