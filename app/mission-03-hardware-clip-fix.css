@@ -1,0 +1,52 @@
+/* Mission 03 — prevent hardware card footer copy from being clipped */
+.m03u-hardware {
+  overflow: visible !important;
+  padding-bottom: clamp(110px, 14vh, 180px) !important;
+}
+
+.m03u-hardware-grid {
+  align-items: stretch;
+  overflow: visible;
+}
+
+.hw-card {
+  height: auto !important;
+  min-height: 500px !important;
+  padding-bottom: 36px !important;
+  overflow: visible !important;
+}
+
+.hw-card > p {
+  flex: 0 0 auto;
+}
+
+.hw-card > strong {
+  display: block;
+  margin-top: 32px !important;
+  padding-top: 0 !important;
+  flex: 0 0 auto;
+  min-height: 24px;
+  line-height: 1.65 !important;
+  overflow: visible;
+}
+
+@media (max-width: 1180px) {
+  .m03u-hardware-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .hw-card {
+    min-height: 440px !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .m03u-hardware-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hw-card {
+    min-height: 0 !important;
+    padding-bottom: 30px !important;
+  }
+}
