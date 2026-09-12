@@ -38,6 +38,7 @@ import "./mission-05-ai-landscape.css";
 import "./mission-05-provider-readability.css";
 import "./background-rotator.css";
 import "./site-readability.css";
+import "./ticker-continuity.css";
 
 export const metadata: Metadata = {
   title: "VEXUM ACADEMY｜IT・AI SEMINAR",
